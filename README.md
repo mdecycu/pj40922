@@ -1,2 +1,2 @@
-# cmsite
-cmsimde template uses mdecycu/cmsimde as submodule
+# pj40922
+https://mde.tw/pj40922
