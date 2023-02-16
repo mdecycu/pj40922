@@ -9,6 +9,8 @@ https://github.com/mdecycu/The-Sine-Cosine-Algorithm-for-Solving-Optimization-Pr
 
 https://docu.ngsolve.org/nightly/i-tutorials/index.html
 
+https://docu.ngsolve.org/latest/i-tutorials/wta/elasticity3D.html
+
 https://github.com/mangdangroboticsclub/QuadrupedRobot
 
 https://community.robotshop.com/forum/t/robotic-dog-project/68973
