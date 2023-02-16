@@ -18,3 +18,7 @@ https://www.youtube.com/watch?v=-cBQt0j2BwI
 https://www.researchgate.net/publication/351078148_Design_and_Control_of_a_Open-Source_Low_Cost_3D_Printed_Dynamic_Quadruped_Robot
 
 https://github.com/SJ-YI/PADWQ_open_source
+
+Femap tutorial: https://www.youtube.com/watch?v=MziQXNgZFuo 
+
+https://structures.aero/femap-tutorial/
