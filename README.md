@@ -6,3 +6,5 @@ https://markus-x-buchholz.medium.com/the-sine-cosine-algorithm-for-solving-optim
 https://github.com/mdecycu/The-Sine-Cosine-Algorithm-for-Solving-Optimization-Problems-with-Constraints-in-Cpp
 
 [The Whale Optimization Algorithm](https://www.sciencedirect.com/science/article/pii/S0965997816300163)
+
+https://docu.ngsolve.org/nightly/i-tutorials/index.html
