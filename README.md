@@ -8,3 +8,9 @@ https://github.com/mdecycu/The-Sine-Cosine-Algorithm-for-Solving-Optimization-Pr
 [The Whale Optimization Algorithm](https://www.sciencedirect.com/science/article/pii/S0965997816300163)
 
 https://docu.ngsolve.org/nightly/i-tutorials/index.html
+
+https://github.com/mangdangroboticsclub/QuadrupedRobot
+
+https://community.robotshop.com/forum/t/robotic-dog-project/68973
+
+https://www.youtube.com/watch?v=-cBQt0j2BwI
