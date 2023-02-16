@@ -24,3 +24,13 @@ https://github.com/SJ-YI/PADWQ_open_source
 Femap tutorial: https://www.youtube.com/watch?v=MziQXNgZFuo 
 
 https://structures.aero/femap-tutorial/
+
+<img src="https://mde.tw/pj40922/images/NGSolve_3d_demo1.png" width="800"></img>
+
+<img src="https://mde.tw/pj40922/images/NGSolve_3d_demo2.png" width="800"></img>
+
+<img src="https://mde.tw/pj40922/images/NGSolve_3d_demo3.png" width="800"></img>
+
+<img src="https://mde.tw/pj40922/images/NGSolve_3d_demo4.png" width="800"></img>
+
+<img src="https://mde.tw/pj40922/images/NGSolve_3d_demo5.png" width="800"></img>
