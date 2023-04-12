@@ -1,9 +1,12 @@
-\chapter{機器學習}
-\section{類神經網絡}
+\chapter{有限元素法}
+
+%---------------------第二章/基本概念及假設假定-------------------------%
+
+\section{基本概念及假設假定}
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=16cm]{類神經網路架構}
-\caption{\Large 類神經網路架構}\label{類神經網路架構}
+\caption{\Large 基本概念及假設假定}\label{基本概念及假設假定}
 \end{center}
 \end{figure}
 
@@ -22,12 +25,17 @@
 \newpage
 \begin{figure}
 \begin{center}
-\includegraphics[width=16cm]{類神經網路關係}
-\caption{\Large 類神經網路關係}
-\label{類神經網路關係}
+\includegraphics[width=16cm]{基本概念及假設假定}
+\caption{\Large 基本概念及假設假定}
+\label{基本概念及假設假定}
 \end{center}
 \end{figure}
-\subsection{啟動函數}
+
+%=-------------------定義及術語---------------=%
+
+\subsection{定義及術語}
+
+%=-------------------定義及術語---------------=%
 啟動函數是設計類神經網路的關鍵部分，如果不使用啟動函數，神經元的計算只會有線性組合，這樣的類神經網路缺乏活性而且記憶性差；啟動函數能讓神經元計算呈現非線性，讓類神經網路因為計算的非線性而提高整個網路的活性和記憶性。\\
 以下介紹幾種較為常見的啟動函數及其特性：
 \begin{itemize}
@@ -57,328 +65,13 @@ ReLU Function方程式特性：若輸入值為負值，輸出值為0；若輸入
 $$f(x)=max(0,x)$$
 $$if , x<0 , f(x)=0$$
 $$else f(x)=x$$
-\subsection{損失函數}
-損失函數是類神經網路的另一個重要的部分，損失函數會將類神經網絡的結果與期望結果進行比較，且必須重複估算模型當前狀態的誤差；該函數可用於估計模型的損失，以便可以更新權重減少下次評估時的損失，下一節會有詳細說明，以下簡述幾種優化的方法：\\
-\begin{itemize}
-\item Gradient Descent\\
-利用梯度的方式尋找最小值的位置，其特色可找到凸面error surface的絕對最小值，在非凸面error surface上找到相對最小值。其缺點是在非凸面error surface要避免被困在次優的局部最小值。
-\item Batch gradient descent\\
-用批次的方式計算訓練資料，整個資料集計算梯度只更新一次，因此計算和更新時會占用大量記憶體。整體效率較差、速度較緩慢。由 Gradient Descent 延伸出來的算法。其收斂行為與 Gradient Descent 相同。
-\item Stochastic gradient descent\\
-每次執行時會更新並消除誤差，有頻繁更新和變化大的特性，較不容易困在特定區域。由 Gradient Descent 延伸出來的算法。其收斂行為與 Gradient Descent 相同。
-\item Mini-batch gradient descent\\
-結合 Batch gradient descent 和 Stochastic gradient descent 的特點：批量計算和頻繁更新，所衍伸的算法。利用小批量的方式頻繁更新，並使收斂更穩定。其缺點：學習率挑選不易、預定義 threshold 無法適應數據集的特徵、對很少發生的特徵無法執行較大的更新、非凸面error surface要避免被困在次優的局部最小值等。
-\item Gradient descent optimization algorithms\\
-為了改善前面幾種算法而發展出來的優化算法。以下將列出數種優化算法。
-\item Momentum\\
-在梯度下降法加上動量的概念，會加速收斂到最小值並減少震盪。
-\item Nesterov accelerated gradient\\
-NAG，有感知能力的 Momentum：在坡度變陡時減速，避免衝過最小值所造成的震盪(為了修正到最小值，來回修正而產生的震盪)。
-\item Adagrad\\
-其學習率能適應參數：頻繁出現的特徵用較低的學習率，不經常出現的特徵則用較高的學習率，且無須手動調整學習率。其缺點是，學習率會急遽下降，最後會無限小，這算法就不再獲得知識。
-\item Adadelta\\
-為 Adagrad 的延伸，下降激進程度，學習率從更新規則中淘汰，不需設定預設學習率。
-\item RMSprop\\
-為了解決 Adagrad 學習率急劇下降的問題，學習率除以梯度平方的RMS，解決學習率無限小的情形。
-\item Adam Function\\
-結合了 Adagrad 和 RMSprop的優勢，有論文表示，在訓練速度方面有巨大性的提升，但在某些情況下，Adam實際上會找到比隨機梯度下降法更差的解決方法。以下是計算過程:\\
-$$g_t=\delta_{\theta}f(\theta)$$
-一次矩指數移動均線 :\\
-$$m_t =\beta(m_{t-1})+(1-\beta_1)(\nabla{w_t})$$
-$$\hat m_t=\frac{m_t}{1-\beta_1^t}$$
-二次矩指數移動均線 :\\
-$$v_t=\beta_2(v_t-1)+(1-\beta_2)(\nabla{w_t})^2$$
-$$\hat{v_t}=\frac{v_t}{1-\beta_2^t}$$
-因此,Adam Function:\\
-$$\omega_{t-1}=\omega_t-\frac{\eta}{\sqrt{\hat{v_t}-\epsilon}}\hat{m_t}$$
-\item AdaMax\\
-與 Adam 相似，依靠$(u_t)$ 最大運算。
-\item Nadam\\
-結合 Adam 和 NAG ，應用先前參數執行兩次更新，一次更新參數一次更新梯度。
-\item AMSGrad\\
-改善 Adam 算法所導致收斂較差的情況(用指數平均會減少其影響)，換用梯度平方最大值來做計算，並移除去偏差的步驟。是否有比 Adam 算法好仍有待觀察。
-\item Gradient noise\\[6pt]
-有助於訓練特別深且復雜的網絡，noise 可改善不良初始化的網路。
-\item Mean Squared Error\\
-他能告訴你一組點與回歸線接近的程度，透過獲取點與回歸線之距離(這些距離就是誤差)並對它們進行平方來做到這點，而平方是為了消除所有負號，也能讓更大的差異賦予更大的權重。\\
-\vspace{8cm}
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.6]{MSE}
-\caption{\Large 線性回歸}\label{線性回歸}
-\end{center}
-\end{figure}
-\qquad \\
 
-回歸線 :數據點間最小距離的一條線。 \\
-n：數據點的數量\\
-$y_i$： 觀測值\\
-$\hat{y_i}$：預測值\\
-$$MSE=\frac{1}{n} \sum_{i=1}^n(y_i-\overline{y} _i)^2$$\\
-\end{itemize}
-\newpage
-\subsection{優化算法}
-\renewcommand{\baselinestretch}{1}
+%=-----------------------------數學模型---------------------------=%
 
-\begin{itemize}
-\item Gradient Descent Optimizer[\ref{OGD}]\\
+\section{數學模型}
 
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=10cm]{Error_surface-2}
-\caption{\Large Error surface [\ref{OGD}]}
-\label{Error_surface-2}
-\end{center}
-\end{figure}
-%\fontsize{14pt}{28pt}\selectfont
- 藉由梯度下降將目標函數值最小化，目標函數以loss function L($\theta$)為例，$\theta$為weight(w)和bias(b)的向量函數，為了找到(圖.\ref{Error_surface-2})上的最小值，因此加上$\Delta\theta$將$\theta$ 的方向修正並引導到正確方向，避免每次修正的過多導致錯過最小值，利用係數$\eta$(學習率)縮放$\Delta\theta$的修正量(圖.\ref{theta_vector})，修正後方程式為：
-$$\theta=\theta+\eta\cdot\Delta\theta$$
-\begin{figure}
-\begin{center}
-\includegraphics[width=10cm]{theta_vector}
-\caption{\Large theta vector[\ref{OGD}]}
-\label{theta_vector}
-\end{center}
-\end{figure}
-\newpage
-將$\theta$以泰勒展開式表示，假設並$\Delta\theta$為u:
-\begin{center}
-$L_{(\theta+\eta u)}=L_{(\theta)}+\eta u^{T}\cdot\bigtriangledown_{\theta} L_{(\theta)}+\frac{\eta^2}{2!}u^T\cdot\bigtriangledown^2 L_{(\theta)}u+\frac{\eta^3}{3!}...+\frac{\eta^4}{4!}...+\frac{\eta^n}{n!}...$\\
-\end{center}
-以泰勒展開式的型式表示的好處是：$\theta$些微的更動產生新值。$\eta$值通常小於一，當$\eta^2 << 1$，因此可以忽略高階項 
-\begin{center}
-$L_{(\theta+\eta u)}=L_{(\theta)}+\eta u^{T}\cdot\bigtriangledown_{\theta} L_{(\theta)} [\eta\ is\ typically\ small, so\ \eta^2, \eta^3,\cdots \rightarrow 0]$\\
-\end{center}
-新的$L(\theta + \eta u)$輸出的值會小於$L(\theta) L(\theta+\eta u) − L(\theta) < 0$，同理可證$u^T\cdot\bigtriangledown\theta L(\theta)$，符合u這條件：當新的值小於舊的值，u就是一個好的值。假設u和$\bigtriangledown\theta L(\theta)$的夾角為$\beta$\\
-\begin{center}
-$\cos(\beta)=\frac{u^{T}\cdot\bigtriangledown_{\theta} L_{(\theta)}}{\vert u^{T}\vert\vert \bigtriangledown_{\theta} L_{(\theta)}\vert}$\\
-\end{center}
-因為$\cos(\theta)$的值介於1和-1之間\\
-\begin{center}
-$-1<\cos(\beta)=\frac{u^{T}\cdot\bigtriangledown_{\theta} L_{(\theta)}}{\vert u^{T}\vert\vert \bigtriangledown_{\theta} L_{(\theta)}\vert}\leq 1$\\
-$k=\vert u^{T}\vert\vert \bigtriangledown_{\theta} L_{(\theta)}\vert$\\
-$-k \leq k\cos(\beta)=u^{T}\cdot\bigtriangledown_{\theta} L_{(\theta)}\leq k$
-\end{center}
-\newpage
- 所以盡可能的讓新值小於舊值$(L(\theta+\eta u) − L(\theta) < 0)$，loss 值就會減少得越多。因此$u T \cdot \bigtriangledown\theta L(\theta)$應該為負，在這情況下$\cos(\beta)$於−1，$\beta$的角度為 $180^{\circ}$這就是$\theta$移動的方向與梯度方向相反的原因。 梯度下降法告訴我們：當$\theta$在特定值，並想減少新的$\theta$值，使 loss 值逐漸減少就應該與梯度相反的方向找 (若梯度為正值，找最小值就需往負的方向找):
-\begin{center}
-$w_{t=1}=w_t-\eta\bigtriangledown w_t$\\
-$b_{t=1}=b_t-\eta\bigtriangledown b_t$\\
-$where\ at\ w=w_t,b=b_t$\\
-$\begin{cases}
- \bigtriangledown w_t=\frac{\partial L_{_{(\theta)}}}{\partial w}
- \bigtriangledown b_t=\frac{\partial L_{_{(\theta)}}}{\partial b}
- \end{cases}$
-\end{center}
-\item Batch gradient descrnt [\ref{OGD2}]\\
- Vanilla gradient descent 又稱 Batch gradient descent(批次梯度下降法)，計算目標函數的梯度，參數$\theta$對於整個 訓練資料：
-\begin{center}
-$\theta=\theta-\eta\cdot\bigtriangledown_{\theta}L_{(\theta)}$
-\end{center}
- 目標函數以為例 loss function L($\theta$)，參數$\theta$為 weight(w)和 bias(b)的函數，$\eta$為學習率。由於計算整個資料集計算梯度只更新一次，Bath gradient descent 可能非常慢並且對於資料集無法符合及記憶體來說棘手(一次需要儲存整個資料集的資料，當更新和計算時會占用大量記憶體)。\\
-\begin{lstlisting}[caption=\Large Batch gradient descrnt]
- for i in range(nb_epochs) :
-params_grad = evaluate_gradient (loss_function, data, params)
-params = params − learning_rate * params_grad
-\end{lstlisting}
-\newpage
- 預定義每次epoch，先計算loss function梯度向量對於整個資料集參數向量。如果梯度值來自於先前計算出的梯度值，就會檢查梯度，並以梯度相反的方向更新參數$\theta$，學習率$\eta$決定多大的更新量。Batch gradient descent對於凸面誤差可以保證收斂到廣域最小值，對於非面凸誤差可以收斂到局部最小值。
-\item Stochastic gradient descent(SGD)[\ref{OGD2}]\\
-隨機梯度下降法，這裡的目標函數為$J(\theta, x^i, y^i)$(變數$\theta$為 w(weight) 和 b(bias) 的函數，也可以寫成$J(w,b,\theta, x^i, y^i)$)。\\
-\begin{center}
-$\theta=\theta-\eta\cdot\bigtriangledown_{\theta}J_{(\theta, x^i, y^i)}$
-\end{center}
-批量梯度下降他會在每個參數更新前重新計算相似梯度。SGD 每次次執行會更新來消除多餘 (誤差)，因此通常速度 很快。SGD 頻繁更新並變化很大，因為目標方程式波動很大(圖.\ref{sgd_fluctuation})。\\
+%=-----------------------------數學模型---------------------------=%
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=10cm]{sgd_fluctuation}
-\caption{\Large SGD fluctuation[\ref{OGD2}]}
-\label{sgd_fluctuation}
-\end{center}
-\end{figure}
- SGD 的方程式一方面會跳到新的值和潛在局部最小值，另一方面 SGD 會持續超調 (誤差超過預期) 最後收斂到廣域最小值。無論如何他被顯示當學習率下降緩慢，SGD 顯示與 Batch gradient descent 同樣收斂行為，幾乎可以肯定地，對於凸面或非凸面優化，會收斂到絕對或是局部最小值。這程式碼片段[程式.2.2] 在訓練樣本上加入一個迴圈來對每個樣本評估梯度。每個 epoch(訓練循環) 會打亂訓練數據。
-\label{code Stochastic gradient descrnt code}
-\begin{lstlisting}[caption=\Large Stochastic gradient descrnt ]
-for i in range(nb_epochs) :
-np.random.shuffle(data)
-for example in data :
-params_grad = evaluate_gradient (loss_function, example, params)
-params = params − learning_rate * params_grad
-\end{lstlisting}
-\item Mini-batch gradient descent[\ref{OGD2}]
-
- Mini-batch gradient descent(小批量梯度下降) 各取前兩者的優點，將資料集分割成小區塊，每個小區塊大小稱作 batch size，每次跑完 batch size 算迭代 (iteration)一次，算完一次資料集即完成一次 epoch。舉例: 資料集大小為1000，若 batch size 為50，iteration 為 datasets 的batch size  = 1000÷50 = 20，當 iteration 跑完 20 次算完成一次 epoch。\\
-這方式可以減少參數更新的方差，並且可以穩定收斂；可利用深度學習庫所共有的高度優化的矩陣優化，從而由一個小批量計算出梯度非常有效。通常 batch sizes 的範圍介於 50 ~256，會因為應用而有所差異。訓練神經網絡時，通常選擇 Mini-batch gradient descent 算法，而當使用這算法時，通常也用 SGD 稱呼。\\
-\begin{center}
-$\theta=\theta-\eta\cdot\bigtriangledown_{\theta}J_{(\theta, x^{(i:i+n)}, y^{(i:i+n)})}$
-\end{center}
-下面[程式.2.3] 為迭代範例，batch size 大小為 50：\\
-\label{Mini-batch gradient descrnt}
-\begin{lstlisting}[caption=\Large Mini-batch gradient descrnt]
-for i in range(nb_epochs ) :
-np.random.shuffle(data)
-for batch in get_batches (data, batch_size = 50):
-params_grad = evaluate_gradient (loss_function, batch, params)
-params = params − learning_rate ∗ params_grad
-\end{lstlisting}
-Mini-batch gradient descent 無論如何還是無法確保收斂的很好，存在一些需要解決的挑戰：
-\begin{enumerate}[1]
-\item 選擇適當的學習率是有難度的。如果學習率太小會導致收斂困難或緩慢，學習率太大則會阻礙收斂導致 loss function 來回波動或發生偏離。
-\item 學習率清單嘗試在訓練的時候調整學習率，即根據預定義清單或當目標下降於閾值 (threshold) 時降低學習率。 但清單和閾值須預先定義，因此無法適應數據集的特徵。
-\item 另外相同學習率適用全部參數更新。如果資料稀疏而且外型有很特別的頻率，我們可能不希望將所有特徵更新 到相同的程度，而是對很少發生的特徵執行較大的更新。
-\item 最小化神經網路常見的高度非凸面誤差方程式 (error function) 的另一關鍵挑戰則是要避免被困在大量次優的局 部最小值區域中。認為困難實際上不是由局部最小值引起的，而是由鞍點引起的，即一維向上傾斜而另一維向下 傾斜的點。這些鞍點通常被相同誤差的平穩段包圍，這使得 SGD 很難逃脫，因為在所有維度上梯度都接近於零。
- \end{enumerate}
-\item Gradient descent optimization algorithms[\ref{OGD2}]\\
-SGD 難以在陡峭的往正確的方向，那就是說在一個維度上，曲面的彎曲比另一個維度要陡得多，這在局部最優情況下很常見。下圖(圖.1)的同心圓代表中心下凹的曲面。在這些情況下，SGD 會在陡峭的地方振盪，而僅沿著底部朝著局部最優方向猶豫前進，如(圖.\ref{fig.without_momentum}) 所 示。 Momentun(動量) 是一個幫助加速 SGD 在正確方向和抑制震盪的方法，在(圖.\ref{fig.with_momentum})。\\
-
-\begin{figure}[hbt!]
-\begin{center}
-\subfigure{
-\begin{minipage}[t]{0.5\linewidth}  %設定圖片間距
-\includegraphics[width=6cm]{without}
-\caption{\Large SGD without momentum[\ref{OGD2}]}
-\label{fig.without_momentum}
-\end{minipage}
-}
-\subfigure{
-\begin{minipage}[t]{0.5\linewidth}
-\includegraphics[width=6cm]{with}
-\caption{\Large SGD with momentum[\ref{OGD2}]}
-\label{fig.with_momentum}
-\end{minipage}
-}
-\end{center}
-\end{figure}
-
-這麼做會增加一個係數$\gamma$來更新上次的向量到正確向量 (修正偏差)，$\gamma$通常設為 0.9 左右。
-\begin{center}
-$v_t = \gamma v_{t-1}+\eta\cdot\bigtriangledown_{\theta}J_{(\theta)}$
-$\theta = \theta-v_t$
-\end{center}
- 實際上，使用動量的時候，就像將球推下山坡。球在下坡時滾動時會累積動量，在途中速度會越來越快（如果存在空氣阻力，直到達到極限速度，也就是$\gamma < 1$) 參數更新也發生了同樣的事情：動量 (momentum) 對於梯度指向相同方向的維度增加，而對於梯度改變方向的維減少動量。結果，我們獲得了更快的收斂並減少了振盪。\\
-
- Nesterov accelerated gradient（NAG）是一種使動量具有一個去向的概念，以便在山坡再次變高之前知道它會減速。我們知道使用動量$\gamma v_{t-1}$來移動參數。計算$\theta - \gamma v_{t-1}$這樣就給了參數的下一個位置的近似值（完整更新缺少的梯度），這是參數將要存在的大致概念。現在，通過計算與當前參數無關的梯度來有效地看到目前的參數$theta$將會移動到的位置：
-\begin{center}
-$v_t = \gamma v_{t-1}+\eta\cdot\bigtriangledown_{\theta}J_{(\theta-\gamma v_{t-1})}$
-$\theta = \theta - v_t$
-\end{center}
-
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=13cm]{NAG}
-\caption{\Large NAG[\ref{OGD2}]}
-\label{NAG}
-\end{center}
-\end{figure}
-同樣，我們設置動量$\gamma$約為0.9。動量首先計算當前梯度（(圖.\ref{NAG})中的藍色小向量），然後在更新的累積梯度（藍 色向量）的方向上發生較大的跳躍，而 NAG 首先在先前的累積梯度的方向上進行較大的跳躍（棕色向量），測量梯度，然後進行校正（紅色向量），從而完成 NAG 更新（綠色向量）。這種預期的更新可防止我們過快地進行，並導致響應速度增加，從而顯著提高了 RNN 在許多任務上的性能。\\
-Adagrad[\ref{OGD2}]：\\
- Adagrad 是一個梯度優化的算法，它可以做到：學習率適應參數，對於頻繁出現的特徵相關參數執行較小的更新(較低的學習率)，以及對不經常出現的特徵相關參數進行較大更新（即學習率較高）。Adagrad可以提高SGD的強度，用於訓練大型神經網絡。\\
- 先前，在同一次$theta$參數(更新後就算另一次)，每個$theta$都使用相同的$\eta$(學習率)。Adagrad 則是對每個$theta$參數使用 不同的$\eta$，t 代表 time step。先將 Adagrad 的更新參數向量化。用$g_t$表示目標函數 (參數$theta$在 time step t) 對參數做偏微分計算。
-\begin{center}
-$g_{t,i}=\bigtriangledown_{\theta}J_{(\theta_{t,i})}$
-\end{center}
-當 SGD 更新每個參數$\theta_i$，在每個 time step t，因此變成：
-\begin{center}
-$\theta_{t+1,i}=\theta_{t,i}-\eta\cdot g_{t,i}$
-\end{center}
-更新規則，Adagrad 根據先前$\theta_i$計算的梯度，對每個參數$\theta_i$修改整個學習率$\eta$在每個 time stept：
-\begin{center}
-$\theta_{t+1,i}=\theta_{t,i}-\frac{\eta}{\sqrt{G_{t,ii}+\epsilon}}$
-\end{center}
-$G_t \in \mathbb{R}^{d\times d}$這是一個對角矩陣每個對角元素 i，i 是關於$theta$梯度平方和取決於 time stept，$\epsilon$是避免分母為0($\epsilon$通常為$10^{-8}$)，如果沒有平方根運算，該算法的性能將大大降低。$G_t$包含了過去梯度平方根，由於全部$theta$參數沿著對角線，通過向量的內積計算$G_t$和$g_t$:
-\begin{center}
-$\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{G_{t}+\epsilon}}\cdot g_t$
-\end{center}
- Adagrad 主要好處之一是，無需手動調整學習率。大多數實現使用預設值 0.01 並將其保留為預設值。Adagrad主要弱點是會累積分母的平方梯度：由於每項都是正的，累積和會在訓練中不斷增長。反過來，學習率下降，並最終變得無限小，這算法就不再獲得知識。\\
-Adadelta[\ref{OGD2}]：\\
- Adadelta是Adagrad的延伸，下降其激進的程度，單調的降低學習率。Adadelta會限制過去累積的梯度，並將其限制在某個特定大小 w，並代替Adagrad過去累積的梯度平方，以梯度總和是遞迴定義為所有過去衰減梯度平方平均值。流動平均$E[g^2]_t$ 在time stept然後取決於(像Momentum的$\gamma$)先前平均和最近梯度：
-\begin{center}
-$E[g^2]_t=\gamma E[g^2]_{t-1}+(1-\gamma)g^2 _t$
-\end{center}
-$\gamma$值和 Momentum 的相似，約為 0.9，現在根據參數更新向量$\bigtriangleup\theta_t$來重寫 SGD：
-\begin{center}
-$\bigtriangleup\theta_t=-\eta\cdot g_{t,i}$\\
-$\theta_{t+1}=\theta_t+\bigtriangleup\theta_t$
-\end{center}
-Adagrad 的參數更新向量替換成：對角矩陣$G_t$過去梯度平方的衰退平均$E[g^2]_t$
-\begin{center}
-$\bigtriangleup\theta_t=-\frac{\eta}{\sqrt{G_t+\epsilon}}\cdot g_t$\\
-$replace\ G_t\ with\ E[g^2]_t\Rightarrow\bigtriangleup\theta_t=-\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}}\cdot g_t$
-\end{center}
-由於分母只是梯度的均方根 (RMS)，我們可以取代成縮寫：
-\begin{center}
-$\bigtriangleup\theta_t=-\frac{\eta}{RMS[g]_t}\cdot g_t$
-\end{center}
- 這個更新單位和 SGD、Momentum 以及 Adagrad 的單位不符合，因此更新需有相同的參數。為了實現這一點，首先定義另一個指數衰減平均值，這次不是梯度平方更新而是參數平方更新：
-\begin{center}
-$E[\bigtriangleup\theta^2]_t=\gamma E[\bigtriangleup\theta^2]_{t-1}+(1-\gamma)\bigtriangleup\theta^2 _t$
-\end{center}
-RMS 參數更新:
-\begin{center}
-$RMS[\bigtriangleup\theta]_t=\sqrt{E[\bigtriangleup\theta^2]_t+\epsilon}$
-\end{center}
-$RMS[\bigtriangleup\theta]_t$是未知的，更新參數的 RMS 取近似值到上個 time step。用$RMS[\bigtriangleup\theta]_t$取代學習率$\eta$，最後產生新的規則：
-\begin{center}
-$\bigtriangleup\theta_t=-\frac{RMS[\bigtriangleup\theta]_{t-1}}{RMS[g]_t}g_t$
-\\
-$\theta_{t+1}=\theta_t+\bigtriangleup\theta_t$
-\end{center}
-使用 Adadelta，甚至不需要設定預設學習率，因為它已從更新規則淘汰。\\
-RMSprop[\ref{OGD2}]：\\
- RMSprop 是 Geoffrey Hinton 在他的課程中提出的未公開自適應學習率的方法。\\
-
- RMSprop 和 Adadelta 都是為了解決 Adagrad 的學習率急劇下降的問題個別獨立開發出來的解決方式。RMSprop 實際上與 Adadelta 得出的第一個更新向量相同：
-\begin{center}
-$E[g^2]_t=0.9E[g^2]_t+0.1g^2 _t$
-\\
-$\theta_{t+1}=\theta_t-\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}}g_t$
-\end{center}
-
- RMSprop 也將學習率除以梯度平方的指數衰減平均值。Hinton 建議$\gamma$設為 0.9，好的預設學習率$\gamma$數值為 0.001。\\
-Adaptive Moment Estimation：[\ref{OGD2}]\\
- Adaptive Moment Estimation 自適應矩評估 (Adam) 是另一種計算每個評估學習率的方法。出了儲存過去梯度平 方的指數衰減平均值$v_t$，就像 Adadelta 和 RMSprop 一樣，Adam 還保留過去梯度的指數衰減平均值$m_t$，類似動量 (Momentum)。如果 Momentum 被視為順著斜坡下滑的球，而 Adam 則是像一個帶有摩擦的沉重的球，因此更適合待在 error face 平坦的最小值區域。計算過去梯度平方的衰減平均值$m_t$和$v_t$分別如下：
-\begin{center}
-$m_t=\beta_1 m_{t-1}+(1-\beta_1)g_t$\\
-$v_t=\beta_2 v_{t-1}+(1-\beta_2)g^2 _t$
-\end{center}
-$m_t$和$v_t$分別是第一階矩平均估計值和第二階矩無中心方差估計值，因此是方法的名稱。像$m_t$和$v_t$被初始化為向量 o，Adam 的作者觀察到它們偏向零，特別是在初始 time step，尤其是在衰減率較小的時候 (也就是說$\beta_1$和$\beta_2$趨近於 1) 藉由計算校正偏差第一矩$\hat{m}_t$和第二矩$\hat{v}_t$抵消偏差：
-\begin{center}
-$\hat{m}_t = \dfrac{m_t}{1 - \beta^t_1}$\\
-$\hat{v}_t = \dfrac{v_t}{1 - \beta^t_2}$
-\end{center}
-使用他們去更新參數，就像 Adadelta 和 RMSprop 中所看到的那樣，這將產生 Adam 更新規則：
-\begin{center}
-$\theta_{t+1} = \theta_{t} - \dfrac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$
-\end{center}
-$\beta_1$預設值建議為 0.9，$\beta_2$預設值建議為 0.999，ϵ 預設值建議為$10^{-8}$。根據經驗證明 Adam 表現良好，並且與其他自適應學習算法相比具有優勢。
-在 Adam 更新規則中的$v_t$係數是與梯度成反比地縮放過去梯度的範數 (通過 $v_{t-1}$項) 和當前梯度$|g_t|^2$：
-\begin{center}
-$v_t = \beta_2 v_{t-1} + (1 - \beta_2) |g_t|^2$
-\end{center}
-我們轉換這個更新到$\ell_p$。注意$\beta_2$參數化為$\beta_2^p$：
-\begin{center}
-$v_t = \beta_2^p v_{t-1} + (1 - \beta_2^p) |g_t|^p$
-\end{center}
-大規範 p 值使數值上變得不穩定，這就是為什麼$\ell_1$和$\ell_2$規範在實踐中是最常見的。然而$\ell_\infty$通常也表現出穩定 的行為。為了避免與 Adam 混用，所以使用$u_t$來表示無窮範數約束$v_t$：
-\begin{center}
-$u_t = \beta_2^\infty v_{t-1} + (1 - \beta_2^\infty) |g_t|^\infty$\\
-$= \max(\beta_2 \cdot v_{t-1}, |g_t|)$
-\end{center}
-替換為Adam更新公式$\sqrt{\hat{v}_t} + \epsilon$和$u_t$得出AdaMax更新規則：
-\begin{center}
-$\theta_{t+1} = \theta_{t} - \dfrac{\eta}{u_t} \hat{m}_t$
-\end{center}
-替換為Adam更新公式$\sqrt{\hat{v}_t} + \epsilon$和$u_t$得出AdaMax更新規則：
-\begin{center}
-$\theta_{t+1} = \theta_{t} - \dfrac{\eta}{u_t} \hat{m}_t$
-\end{center}
-注意$u_t$依靠最大運算，不建議 Adam 中的$m_t$和$v_t$偏向零，這就是為什麼不需要針對$u_t$計算偏差。好的預設值$\eta = 0.002$ $\beta_1 = 0.9$ 和 $\beta_2 = 0.999$。\\
-\end{itemize}
-
-
-\section{強化學習}
-%=----------What is Reinforcement Learning?------------=%
 強化學習(Reinforcement Learning，簡稱為RL)是通過agent(代理)與已知或未知的環境持續互動，不斷適應與學習，會得到正向或負面的回饋，對應到獎賞(reward)和懲罰(punishments)。考慮到agent與環境(environment)互動，進而決定要執行哪個動作，強化學習的學習模式是建立在獎賞與懲罰上。\\
 
 強化學習與其他學習法不一樣的地方在於：不需要事先收集大量數據提供當作學習樣本，而是透過與環境互動，在環境下發生的狀態當作學習的資料來源，透過不斷嘗試使所得到的獎勵最大化。其他類型的機器學習大都需要給予特定資料且有明確的答案。\\
@@ -452,7 +145,10 @@ $\lambda$一般在我們處理時間差異問題時使用。 這是涉及更多�
 強化學習的環境：\\
 \end{flushleft}
 強化學習中的環境由某些因素組成，會對agent產生影響，agent必須根據環境適應各種因素，並做出最佳決策，這些環境可以是各種形式，其中包括2D、3D或是真實世界。強化學習的環境具有確定性、可觀察性，可以是離散或是連續的狀態，則agent可以是單一或多個所組成。\\
-\subsection{馬可夫決策}
+
+%--------------------------第二章/方程介紹--------------------------%
+
+\subsection{方程介紹}
 \begin{itemize}
 \item Markov Chain\\
  馬可夫鏈(Markov Chain)主要是狀態變化的隨機過程(stochastic process)和馬可夫屬性(Markov property)結合。隨機過程(stochastic process)狀態隨著時間變化，而狀態的變化存在著雖機性，並以數學模式表示。馬可夫屬性(Markov property)指在目前以及所有過去事件的條件下，任何未來事件發生的機率，和過去的事件不相關僅和目前狀態相關。當前決策只會影響下個狀態，當前狀態轉移(action)到其他狀態的機率會有所差異。\\
@@ -544,7 +240,10 @@ $$= \sum_{a\in A}\pi (a|s)q^{\pi}(s, a)$$
 \end{figure}
 $$q^\pi(s, a)=R(s, a)+\gamma\sum_{s'\in S}P(s'|s, a)\sum_{a'\in A}\pi(a'|s')q^{\pi}(s', a')$$
 \newpage
-\section{Policy Gradient理論}
+
+%-----------------------第2章/分析步驟--------------------------%
+
+\section{分析步驟}
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=15cm]{policy gradient原理}
@@ -714,3 +413,14 @@ $$\approx \frac{1}{S} \sum_{s=1}^{S}f(z^{(s)})\nabla_\theta \log p(z^{(s)};\thet
  Score function gradient estimator的可視化，左：高斯分佈及其中的一些樣本（藍點)，在每個藍點上，我們還繪製了相對於高斯平均參數的對數概率的梯度，箭頭指示應微調分佈平均值以增加該樣本概率的方向。中間：某些得分函數的疊加，在某些小區域中除了+1之外，其他所有地方都給出-1，箭頭採用顏色區別，更新運用乘法運算，我們將平均所有綠色箭頭和紅色箭頭。右：更新參數後，綠色箭頭和反向紅色箭頭將向左移至底部。現在，根據需要，該分佈中的樣本將具有更高的預期分數。\\
 \fi
 \newpage
+
+%-----------------------第2章/有限元素分析原理--------------------------%
+
+\section{有限元素分析原理}
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=15cm]{policy gradient原理}
+\caption{\Large Policy Gradient原理}
+\label{Policy Gradient原理}
+\end{center}
+\end{figure}
