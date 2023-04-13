@@ -1,6 +1,9 @@
-\chapter{模擬環境}
+%---------------------------------%
+\chapter{設計及模擬環境}
 %\renewcommand{\baselinestretch}{10.0} %設定行距
-\section{模擬模型}
+%---------------------------------%
+\section{建模軟體}
+\subsection{Solid Edge}
  在模擬的模型上，延用了學長設計的冰球機，並進行了部分的設計變更，將原本的人機對打更改為機器對打，且因為搭配深度強化學習的訓練，所以將兩邊的擊球器都僅保留X軸向(左右)移動，而冰球則是使用原本設計。多虧了學長們所設計的冰球機模型，讓我們在運作上有問題時可以直接發問，設計變更的地方也可以快速完成。\\
 \begin{figure}[hbt!]
 \center
@@ -27,7 +30,8 @@
 
 \newpage
 \qquad 分別在擊球器外側保留約冰球直徑1.5倍之區域作為得分判定區，如圖4.4中的紅色區域。\\
-\section{CoppeliaSim模擬}
+%---------------------------------%
+\section{運動學模擬環境}
  CoppeliaSim是具有集成開發環境的機器人模擬器,基於分佈式控制體系架構,可以通過嵌入式腳本，插件，ROS或BlueZero節點，RemoteAPI客戶端或自定義解決方案進行模型控制。\\
  \begin{figure}[hbt!]
 \center
@@ -36,11 +40,9 @@
 \end{figure}
 
 且CoppeliaSim中，控制器可以用C / C ++、Python、Java、Lua、Matlab或Octave編寫。\\
-\subsection{使用原因}
+\subsection{CoppeliaSim}
  本專題之最終目標是希望可以在虛擬環境中進行深度強化學習來訓練機器對打，通過虛擬環境中的模擬後，可以更直接地看到深度強化學習訓練的狀況，且因為在虛擬環境中不會有金費的支出，所以可以不斷的重複模擬直到模擬達到最佳的狀態，除此之外CoppeliaSim的虛擬環境更接近真實環境，基於以上原因，所以使用了CoppeliaSim開發。\\
-\subsection{RemoteAPI}
  RemoteAPI(Remote Application Programming Interface)是CoppeliaSim API框架的一部分。它允許CoppeliaSim與外部應用程序之間的通訊，是跨平台並支持服務調用和雙向數據流。有兩個不同的版本/框架分別為:Remote API 和The B0-based remote API。\\
-\subsection{常用功能}
 \begin{enumerate}
 \item 以下為簡易功能說明:
 \begin{figure}[hbt!]
@@ -72,7 +74,8 @@
 \newpage
 %\item 模擬執行\\%
 \end{enumerate}
-\section{影像處理}
+%---------------------------------------%
+\section{應力分析}
 
 \qquad 在影像處理中我們主要使用了Python套件中的OpenCV(全稱:Open Source Computer Vision Library),並搭配其他套件或模組進行了影像處裡,藉此來取得訓練神經網路訓練時所需的資訊。\\
 \begin{figure}[hbt!]
@@ -81,10 +84,9 @@
 \caption{\Large OpenCV 及Python logo}
 \end{figure}
 
-\subsection{CoppeliaSim中的Vision sensor(視覺傳感器)}
+\subsection{Solid Edge}
  CoppeliaSim的視覺傳感器輸出的影像是以每個像素中以RGB三個位元組所組成的，舉例來說:在CoppeliaSim中視覺傳感器取出畫面像素為512*256，則我們會接收到(512*256)像素*3=393,216個資料，是一筆相當大的資料，所以在影像處理上會消耗掉大量的資源。\\
 
-\subsection{影像辨識}
  透過CoppeliaSim中的Vision sensor接收場景影像並輸出後,便可以開始進行影像辨識的處理。\\
 \begin{enumerate}
 \item RGB與HSV的轉換[\ref{RGBtoHSV}]\\
