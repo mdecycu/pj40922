@@ -66,7 +66,6 @@ $$else f(x)=x$$
 
 %=-----------------------------數學模型---------------------------=%
 \section{數學模型}
-%=-----------------------------數學模型---------------------------=%
 
 強化學習(Reinforcement Learning，簡稱為RL)是通過agent(代理)與已知或未知的環境持續互動，不斷適應與學習，會得到正向或負面的回饋，對應到獎賞(reward)和懲罰(punishments)。考慮到agent與環境(environment)互動，進而決定要執行哪個動作，強化學習的學習模式是建立在獎賞與懲罰上。\\
 
@@ -282,7 +281,6 @@ $V^\pi(s_t) = \mathbb{E}_{s_{t}+1:\infty,a_{t}:\infty}[\sum_{l=0}^\infty r_t+l]$
 $Q^\pi(s_t,a_t) = \mathbb{E}_{s_{t}+1:\infty_,a_{t}+1:\infty}[\sum_{l=0}^\infty r_t+l]$\\[5pt]
 $A^\pi(s_t,a_t) = Q^\pi(s_t,a_t)-V^\pi(s_t)(Advantage Function)$\\[5pt]
 
-\subsection{Actor Critic}
 原始的policy gradient沒有偏差，但方差大;所以提出了許多以下算法來減少方差，同時保持偏差不變：\\[5pt]
 $$g = \mathbb{E}[\sum_{t=0}^\infty\psi_t\nabla_\theta log\pi_\theta(a_t \vert s_t)]$$\\[5pt]
 Actor-Critic：減少原始政策中的梯度方差包括兩個模型\\[5pt]
