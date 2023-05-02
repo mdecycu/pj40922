@@ -42,11 +42,6 @@ Solid Edge為一個由西門子PLM開發的三維特徵造型實體軟體，有�
 \newpage
 \qquad 分別在擊球器外側保留約冰球直徑1.5倍之區域作為得分判定區，如圖4.4中的紅色區域。\\
 
-\subsection{CoppeliaSim}
-在此專題中，CoppeliaSim為我們提供了良好的模擬環境，透過帶入Solid Edge的模型，可以更加直觀的觀察到步行機構的運動軌跡，利用Python或是Lua程式，在開發環境趨近於現實的軟體中，有著相當大的自由度能對零件進行控制，每個轉軸、連桿、控制器等都可以在裡面設定，對尺寸及建模進行運動優化、調整提供了許多便利性，也節省多次修改實體模型的費用。\\
-
-以下為CoppeliaSim簡單介紹\
-
 ----------------圖片--------------------
 
 ----------------表格--------------------
@@ -62,10 +57,13 @@ Solid Edge為一個由西門子PLM開發的三維特徵造型實體軟體，有�
 \includegraphics[width=11cm]{CoppeliaSim}
 \caption{\Large CoppeliaSim Logo}
 \end{figure}
+\newpage
 
-且CoppeliaSim中，控制器可以用C / C ++、Python、Java、Lua、Matlab或Octave編寫。\\
-\subsection{CoppeliaSim}
- 本專題之最終目標是希望可以在虛擬環境中進行深度強化學習來訓練機器對打，通過虛擬環境中的模擬後，可以更直接地看到深度強化學習訓練的狀況，且因為在虛擬環境中不會有金費的支出，所以可以不斷的重複模擬直到模擬達到最佳的狀態，除此之外CoppeliaSim的虛擬環境更接近真實環境，基於以上原因，所以使用了CoppeliaSim開發。\\
+\section{有限元素分析—Solid Edge}
+
+關於有限元素分析，我們利用了Solid Edge作為我們的分析環，會選擇這個軟體當分析環境的其一在於，模型是由Solid Edge建模的，在修改方面不用在不同軟體中來回切換，繪製草圖完畢，可以直接對零件進行分析，透過新建的研究並定義材料或新增材質，設定負載位置，即可方便的對模型進行分析。\\
+分析過後，Solid Edge也能對零件直接進行創成式設計，即為在有限元素法分析過後，軟體經過多層的代數運算，在模型上新增或除料，對比之前工程師需要經過長久計算出可適用的模型，創成式設計大幅減少設計及時間成本，得益於近幾年電腦快速的發展，複雜的運算及設計通通可以透過創成式設計生成，不再受限於設計師的想法或經驗，並可以快速產生多個模型提供挑選。\\
+
  RemoteAPI(Remote Application Programming Interface)是CoppeliaSim API框架的一部分。它允許CoppeliaSim與外部應用程序之間的通訊，是跨平台並支持服務調用和雙向數據流。有兩個不同的版本/框架分別為:Remote API 和The B0-based remote API。\\
 \begin{enumerate}
 \item 以下為簡易功能說明:
