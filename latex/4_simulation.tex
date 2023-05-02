@@ -1,20 +1,12 @@
-%---------------------------------%
 \chapter{設計及模擬環境}
 %\renewcommand{\baselinestretch}{10.0} %設定行距
-%---------------------------------%
+
+%----------------設計環境---Solid Edge-----------------%
 \section{設計環境---Solid Edge}
 
 Solid Edge為一個由西門子PLM開發的三維特徵造型實體軟體，有著設計模型、模擬分析、製造及創成式設計等功能。設計者可以通過輸入參數以生成3D模型或是分析模型等動作，在2017年，Solid Edge也引進創成式設計功能，能夠依照多次疊代運算產生最終的優化結果。\\
 
 本專題在模型參數上參考了許多設計者的機械狗模型，選擇了Solid Edge當作設計環境，因為其中包含了同步建模模型分析和創新式設計等功能，在原先參考的模型中繪製出類似的外觀，接著對此建模作尺寸的調整，讓尺寸可以更加的合理。\\
-
------------------------------------設計圖片------------------------------------
-
-觀察參考的模型，將外觀大致上都繪製出來，接著其中簍空的部分先省略，在之後可以透過拓樸分析將零件輕量化，接著調整尺寸讓多個零件可以配合、組裝。\\
-
-以下簡單介紹各功能\
-
-------------------圖片-------------------
 
 \begin{figure}[hbt!]
 \center
@@ -23,42 +15,34 @@ Solid Edge為一個由西門子PLM開發的三維特徵造型實體軟體，有�
 \label{model}
 \end{figure}
 
-\qquad 將原本Y軸移動機構移除,並將其改為固定在特定位置上，此固定座設計是取代原本鎖在光軸固定坐上的(圖.\ref{model} 代號 1)Y軸皮帶固定座(圖.\ref{axialseat})，並使光軸固定座可以通過連結固定做鎖固於桌面，如(圖.\ref{connectSeat})。\\
+\qquad 觀察參考的模型，將外觀大致上都繪製出來，接著其中簍空的部分先省略，在之後可以透過拓樸分析將零件輕量化，接著調整尺寸讓多個零件可以配合、組裝。\\
+
+\qquad 以下簡單介紹各功能\
 
 \begin{figure}[hbt!]
 \center
-\includegraphics[width=8cm]{axialseat}
-\caption{\Large Y軸皮帶固定座}
-\label{axialseat}
+\includegraphics[width=13cm]{model}
+\caption{\Large 組合圖}
+\label{model}
 \end{figure}
 
-\begin{figure}[hbt!]
-\center
-\includegraphics[width=8cm]{connectSeat}
-\caption{\Large 連結固定座}
-\label{connectSeat}
-\end{figure}
-
-\newpage
-\qquad 分別在擊球器外側保留約冰球直徑1.5倍之區域作為得分判定區，如圖4.4中的紅色區域。\\
-
-----------------圖片--------------------
-
-----------------表格--------------------
-
-%---------------------------------%
-
+%---------------運動學模擬環境---CoppeliaSim------------------%
 \section{運動學模擬環境---CoppeliaSim}
 
 在此專題中，CoppeliaSim為我們提供了良好的模擬環境，透過帶入Solid Edge的模型，可以更加直觀的觀察到步行機構的運動軌跡，利用Python或是Lua程式，在開發環境趨近於現實的軟體中，有著相當大的自由度能對零件進行控制，每個轉軸、連桿、控制器等都可以在裡面設定，對尺寸及建模進行運動優化、調整提供了許多便利性，也節省多次修改實體模型的費用。\\
 
- \begin{figure}[hbt!]
+\qquad 以下為CoppeliaSim簡單介紹\
+
+\begin{figure}[hbt!]
 \center
 \includegraphics[width=11cm]{CoppeliaSim}
 \caption{\Large CoppeliaSim Logo}
 \end{figure}
 \newpage
 
+-------表格---------
+
+%----------------有限元素分析—Solid Edge-----------------%
 \section{有限元素分析—Solid Edge}
 
 關於有限元素分析，我們利用了Solid Edge作為我們的分析環，會選擇這個軟體當分析環境的其一在於，模型是由Solid Edge建模的，在修改方面不用在不同軟體中來回切換，繪製草圖完畢，可以直接對零件進行分析，透過新建的研究並定義材料或新增材質，設定負載位置，即可方便的對模型進行分析。\\
@@ -96,29 +80,10 @@ Solid Edge為一個由西門子PLM開發的三維特徵造型實體軟體，有�
 \newpage
 %\item 模擬執行\\%
 \end{enumerate}
-%---------------------------------------%
+
+%------------------應力分析---------------------%
 \section{應力分析}
 
-\qquad 在影像處理中我們主要使用了Python套件中的OpenCV(全稱:Open Source Computer Vision Library),並搭配其他套件或模組進行了影像處裡,藉此來取得訓練神經網路訓練時所需的資訊。\\
-\begin{figure}[hbt!]
-\center
-\includegraphics[width=10cm]{pythonCVlogo}
-\caption{\Large OpenCV 及Python logo}
-\end{figure}
-
-\subsection{Solid Edge}
- CoppeliaSim的視覺傳感器輸出的影像是以每個像素中以RGB三個位元組所組成的，舉例來說:在CoppeliaSim中視覺傳感器取出畫面像素為512*256，則我們會接收到(512*256)像素*3=393,216個資料，是一筆相當大的資料，所以在影像處理上會消耗掉大量的資源。\\
-
- 透過CoppeliaSim中的Vision sensor接收場景影像並輸出後,便可以開始進行影像辨識的處理。\\
-\begin{enumerate}
-\item RGB與HSV的轉換[\ref{RGBtoHSV}]\\
-RGB即光的三原色Red(紅)Green(綠)Blue(藍)，HSV則是一種將RGB色彩模型中的點在圓柱坐標系中的表示法，HSV分別表示Hue(色相)、Saturation(飽和度)、Value(明度)，而會將RGB轉換為HSV是因為HSV相較於RGB可以更直接的判斷色彩、明暗和鮮豔度對於顏色過濾可以更方便定義出色彩範圍。\\
-\begin{figure}[hbt!]
-\center
-\includegraphics[width=10cm]{HSV}
-\caption{\Large HSV色彩空間}
-\end{figure}
-\newpage
 下列為RGB與HSV之間轉換的公式，首先是RGB轉為HSV，其中$max$及$min$分別為$(r,g,b)$中的最大與最小值:
 $$h=\left\{\begin{matrix}
 0^{\circ}, & \textrm{if}\ max=min\\ 
