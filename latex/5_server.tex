@@ -10,7 +10,14 @@
 馬達(二):\
 所帶動的D桿件，因為A得角度和旋轉限制，使其只能做搖擺運動，D桿件在搖擺後將帶動C桿件，此力在傳遞到B桿件(小腿)，使其也能做搖擺運動。\
 由於A桿件跟著搖擺，大大的增加了此步行機構的運動姿態，B桿末端點有著更大的自由度，可以對應不同地形及運動狀態，但是此機構因此對設計及控制精度的要求更高。\\
----------------------------------Solid Edge 
+
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[angle=90,width=10cm]{Forward kinematics formula}
+\caption{\Large 四連趕機構}\label{Forward kinematics formula}
+\end{center}
+\end{figure}
+
 A部分:Leg1-1 + Leg1_5
 B部分:Leg2 + Leg3
 C部分:leg4
@@ -22,7 +29,7 @@ C部分:leg4
 
 %-----------運動學模擬------------%
 \section{運動學模擬}
-% 首先將模型轉化成STL檔案使其能被CoppeliaSim開啟，利用移動功能將模型移動至合適位置，點選模型使用爆炸功能將模型由一體分為數個零件，插入轉軸並設定中修改零件的重量等參數，導入Pythan程式碼，使用播放查看個機件的姿態、作動是否符合設計，完成之後就可以對模型進行分析並帶入負載求。\\
+首先將模型轉化成STL檔案使其能被CoppeliaSim開啟，利用移動功能將模型移動至合適位置，點選模型使用爆炸功能將模型由一體分為數個零件，插入轉軸並設定中修改零件的重量等參數，導入Pythan程式碼，使用播放查看個機件的姿態、作動是否符合設計，完成之後就可以對模型進行分析並帶入負載求解。\\
 
 \begin{figure}[hbt!]
 \begin{center}
@@ -31,134 +38,21 @@ C部分:leg4
 \end{center}
 \end{figure}
 
-%----------Nginx------------%
-\section{Nginx}
-\hspace{-1.7em} 網路設定：\\
- 首先要修改網路設定檔，而其設定檔放在/etc/netplan目錄下的yaml檔。其中需更改的設定：
-\begin{enumerate}
-\item addresses：為靜態 IP，可以是IPV4或IPV6。
-\item gateway：即為該電腦之閘道器。
-\item nameservers：該電腦之DNS服務器。
-\end{enumerate}
+動態模擬結束後，我們可以將四足機器人運動模式分為以下三種，分別為:\
 
- WSGI（Python Web Server GateWay Interface）為一種用在Python語言上的規範，用來規範Web Server與Web Application之間如何溝通。而uWSGI同為實現了WSGI、uwsgi、http協議等的Web server，通常用於接收前端伺服器轉發的動態請求並轉發給Web Application。前者可以使用Nginx提供的https協定，且同上表述中Nginx的靜態資源處理能力較佳所以也能將靜態資源轉給其處理。\\
- 
-Nginx的主要設定檔nginx.conf可藉由include指令添加其他nginx設定檔的設定去擴增不同域名的設定，常見的設定有 :
-\begin{enumerate}
-\item 預設：
-\begin{lstlisting}[caption=\Large nginx預設]
-  reciveAPP {
-    server localhost:5000;
-    server localhost:5001;
-}
+1. 爬行:\
+此動作較簡單且容易控制，作用在於機器人需緩慢移動或是穩定度需求高的情況下，由其中單腳前伸其餘進行關節旋轉，在小位移量的情況下實現行走功能。\\
 
-server {
-    listen 80;
-    listen [::]:80;
-    server_name SERVER_IP;
-    root /home/hostname;
+2. 小跑:\
+此作用型態為FR+RL或FL+RR做動，進行移動時有著兩動兩不動的準則，在不動的部分做關節的旋轉運動，令四足機器人在快速移動下還能對身體保持平衡，在大位移量的情況下實現行走功能。\\
 
-    location / {
-            uwsgi_pass http://api/;
-            include uwsgi_params;
-    }
-\end{lstlisting}
+3. 跳躍:\
+由前兩足進行快速彈跳位移，使機器狗的關節進行快速調整以支撐身體姿態，分為FL+FR及RL+RR兩組，在躍障或其他特殊行為中使用。\\
 
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[scale=0.74]{clientProxy}
+\caption{\Large clientProxy}\label{clientProxy}
+\end{center}
+\end{figure}
 \newpage
-\item 負載平衡LoadBalance：
-\begin{lstlisting}[caption=\Large load balance設定]
-  reciveAPP {
-        ip_hash;
-        server localhost:5000;
-        server localhost:5001;
-}
-
-server {
-    listen 80;
-    listen [::]:80;
-    server_name SERVER_IP;
-    root /home/ryan;
-
-    location / {
-            uwsgi_pass 127.0.0.1:8000;
-            include uwsgi_params;
-    }
-}
-\end{lstlisting}
-\end{enumerate}
-
- reciveAPP定義了將request proxy過去的應用，例子中server localhost語法代表可以請求proxy到分別監聽5000與5001 port的兩個應用，同時這個block可達到load balancer負載平衡的功能。\\
- 
- server這個block則是定義了proxy server的相關設定，包括要監聽的port（listen 80為監聽所有IPV4位址，listen [::]80則為監聽所有IPV6位址）、規定哪些domain或ip的request會被 nginx server 處理（server\_ name)。\\
- 
- location像是路由（routing）的概念，設定不同的path要對應到怎麼樣的設定。location中則是指對不同路徑的處理。\\
- 
-\begin{enumerate}
-\item location：
-\begin{lstlisting}[caption=\Large location設定]
-  location / #匹配所有目錄
-
-  location /static #匹配所有 /static 的開頭目錄
-\end{lstlisting}
-\end{enumerate}
-
- 要達到load balancer透過一開始介紹的upstream block就可以達成，在上面的例子中，來自某個domain 80 port會被分配到port 5000或port 5001兩個應用中，達成用兩個應用去分擔request的負載平衡器。\\
- 
- 負載平衡裡的負載規則（ip\_hash ）某個request要被導倒哪個應用去處理有不同規則，每個規則都有各自適合使用時機，以下簡單介紹幾個常見的規則：\\
-
-\begin{enumerate}
-\item round-robin（預設）輪詢方式：也就是將請求輪流按照順序分配給每一個 server。假設所有伺服器的處理效能都相同，不關心每臺伺服器的當前連線數和響應速度。適合於伺服器組中的所有伺服器都有相同的軟硬體配置並且平均伺服器請求相對均衡的情況。
-不過也有另外一種可以設定權重的Weight Round Robin（加權輪詢方式），可以設定不同server的權重，例如以下範例：
-\begin{lstlisting}[caption=\Large 設定不同 server 的權重]
-  upstream myweb {
-    server web1.dtask.idv.tw weight=3;
-    server web2.dtask.idv.tw weight=2;
-}
-\end{lstlisting}
-\item least-connected 最少連線：顧名思義為連線進來時會把Request導向連線數較少的Server。
-\item IP-hash依據Client IP來分配到不同台Server：通過一個雜湊（Hash）函式將一個 IP 地址對映到一臺伺服器。先根據請求的目標IP地址，作為雜湊鍵（Hash Key）從靜態分配的散列表找出對應的伺服器。除非斷線或IP變動，否則同個IP的請求都會導入到同一個 server。
-\end{enumerate}
-  uWSGI設定（uwsgi\_ini ）：
- \begin{enumerate} 
- \item wsgi-file：主要運行的py檔案
- \item http，socket，http-socket：端口設定，假使有使用到 前端服務器（如Nginx）時，不能用http設定，因uwsgi協議為HTTP，而Nginx使用傳輸協議為TCP，兩者不能互通。
- \begin{lstlisting}[caption=\Large 簡易uwsgi指令啟動]
-  uwsgi --http：9000 --wsgi-file APP.py 
-\end{lstlisting}
- \item processes、threads：工作序，processes為進程，threads為線程，下方設定為每條近程有兩條線程。
- \begin{lstlisting}[caption=\Large 加入工作程序uwsgi指令啟動]
-  uwsgi --http：9000 --wsgi-file APP.py --processes 4 --threads 2
-\end{lstlisting}
-\item chdir：此項是為了正確的加載模組/檔案 \\
-整體快速配置（這裡儲存成一個.ini文件，其他還有YAML、JSON、XML格式等）：
-\begin{lstlisting}[caption=\Large 將uwsgi指令啟動動作設定成一個啟動檔]
-  [uwsgi]
-socket = :9000
-processes = 4
-threads = 2
-chdir = location/to
-wsgi-file = location/to/file
-\end{lstlisting}
-此項還可加上status：此項為查看uWSGI內部的輸出數據\\
-\begin{lstlisting}[caption=\Large status]
-  -- status 127.0.0.1:9001
-\end{lstlisting}
-實現之通訊流程 
-
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[scale=0.74]{clientToflask}
-\caption{\Large client To flask}\label{clientToflask}
-\end{center}
-\end{figure}
- \end{enumerate}
-\section{Flask}
- 
- 如同以上所述，建立Flask框架的同時需選擇反向代理伺服器（這裡我們選擇了Nginx）來負責網頁請求和結果的回覆，同時還需要一個實現WSGI通信協議的伺服器（我們選擇了 uWSGI）來負責接收代理伺服器的請求後Flask轉發及接收訊息，再轉發回去（代理伺服器）。\\
- 
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[scale=0.74]{total}
-\caption{\Large total}\label{total}
-\end{center}
-\end{figure}
