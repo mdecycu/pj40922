@@ -30,6 +30,38 @@
 \item 網格疏密:在某些變化梯度較大的部位(應力集中處)，需要大密集的網格，密集往個將更好反映數據變化，反之變化梯度較小的部位則用較稀疏的網格，而不同單元之間的連接則採用特殊的過度單元或多點約束等方法連接，才能更好的分配資源，兼顧計算量何計算精度。
 
 \begin{figure}[htbp]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{網格1mm-1}
+    \caption{較密網格}
+    \label{網格1mm-1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{網格1mm-2}
+    \caption{較密網格所得應力雲圖}
+    \label{網格1mm-2}
+  \end{subfigure}
+  
+  \vspace{1cm} % 調整垂直間距
+  
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{網格50mm-1}
+    \caption{較粗網格}
+    \label{網格50mm-1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{網格50mm-2}
+    \caption{較粗網格所得應力雲圖}
+    \label{網格50mm-2}
+  \end{subfigure}
+  
+  \caption{四張相連的圖片}
+  \label{fig:combined}
+\end{figure}
+
+\begin{figure}[htbp]
   \begin{center}
     \begin{minipage}[H]{0.4\linewidth}
       \centering
