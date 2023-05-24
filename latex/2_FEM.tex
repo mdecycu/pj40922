@@ -29,33 +29,36 @@
 \item 網格數量:將決定計算經度及規模大小，一般狀況中，網格數量增加計算精度也會跟著提升，但伴隨而來的是更大的計算量，所以在制定網格大小時應權衡兩個因素。
 \item 網格疏密:在某些變化梯度較大的部位(應力集中處)，需要大密集的網格，密集往個將更好反映數據變化，反之變化梯度較小的部位則用較稀疏的網格，而不同單元之間的連接則採用特殊的過度單元或多點約束等方法連接，才能更好的分配資源，兼顧計算量何計算精度。
 
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=16cm]{網格1mm-1}
-\caption{\Large 較密網格}\label{網格1mm-1}
-\end{center}
+\begin{figure}[htbp]
+  \begin{minipage}[t]{0.3\linewidth}
+    \centering
+    \includegraphics[height=,width=\linewidth]{網格1mm-1}
+    \caption{\Large 較密網格}
+    \label{網格1mm-1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \centering
+    \includegraphics[height=,width=\linewidth]{網格1mm-2}
+    \caption{\Large 較密網格所得應力雲圖}
+    \label{網格1mm-2}
+  \end{minipage}
 \end{figure}
 
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=16cm]{網格1mm-2}
-\caption{\Large 較密網格所得應力雲圖}\label{網格1mm-2}
-\end{center}
-\end{figure}
-\newpage
-
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=16cm]{網格50mm-1}
-\caption{\Large 較粗網格}\label{網格50mm-1}
-\end{center}
-\end{figure}
-
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=16cm]{網格50mm-2}
-\caption{\Large 較粗網格所得應力雲圖}\label{網格50mm-2}
-\end{center}
+\begin{figure}[htbp]
+  \begin{minipage}[t]{0.3\linewidth}
+    \centering
+    \includegraphics[height=,width=\linewidth]{網格50mm-1}
+    \caption{\Large 較粗網格}
+    \label{網格50mm-1}
+  \end{minipage}
+  \hfill
+   \begin{minipage}[t]{0.3\linewidth}
+    \centering
+    \includegraphics[height=,width=\linewidth]{網格50mm-2}
+    \caption{\Large 較粗網格所得應力雲圖}
+    \label{網格50mm-2}
+  \end{minipage}
 \end{figure}
 
 \item 網格質量:指網格型狀的合理性，質量的好壞將直接影響計算精度，質量較差的除了造成局部的計算精度偏差甚至會直接終止計算，因此在重要部位時應該確保其擁有高品質的表現。
