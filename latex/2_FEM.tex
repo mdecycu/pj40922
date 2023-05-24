@@ -31,71 +31,38 @@
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}{0.45\textwidth}
+  \begin{minipage}{0.45\textwidth}
+    \centering
     \includegraphics[width=\textwidth]{網格1mm-1}
     \caption{較密網格}
     \label{網格1mm-1}
-  \end{subfigure}
+  \end{minipage}
   \hfill
-  \begin{subfigure}{0.45\textwidth}
+  \begin{minipage}{0.45\textwidth}
+    \centering
     \includegraphics[width=\textwidth]{網格1mm-2}
     \caption{較密網格所得應力雲圖}
     \label{網格1mm-2}
-  \end{subfigure}
+  \end{minipage}
   
   \vspace{1cm} % 調整垂直間距
   
-  \begin{subfigure}{0.45\textwidth}
+  \begin{minipage}{0.45\textwidth}
+    \centering
     \includegraphics[width=\textwidth]{網格50mm-1}
     \caption{較粗網格}
     \label{網格50mm-1}
-  \end{subfigure}
+  \end{minipage}
   \hfill
-  \begin{subfigure}{0.45\textwidth}
+  \begin{minipage}{0.45\textwidth}
+    \centering
     \includegraphics[width=\textwidth]{網格50mm-2}
     \caption{較粗網格所得應力雲圖}
     \label{網格50mm-2}
-  \end{subfigure}
+  \end{minipage}
   
-  \caption{四張相連的圖片}
+  \caption{四張大小相同的圖片}
   \label{fig:combined}
-\end{figure}
-
-\begin{figure}[htbp]
-  \begin{center}
-    \begin{minipage}[H]{0.4\linewidth}
-      \centering
-      \includegraphics[height=3cm,width=6cm]{網格1mm-1}
-      \caption{\Large 較密網格}
-      \label{網格1mm-1}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[H]{0.4\linewidth}
-      \centering
-      \includegraphics[height=3cm,width=6cm]{網格1mm-2}
-      \caption{\Large 較密網格所得應力雲圖}
-      \label{網格1mm-2}
-    \end{minipage}
-  \end{center}
-\end{figure}
-
-
-\begin{figure}[htbp]
-  \begin{center}
-    \begin{minipage}[t]{0.4\linewidth}
-      \centering
-      \includegraphics[height=3cm,width=6cm]{網格50mm-1}
-      \caption{\Large 較粗網格}
-      \label{網格50mm-1}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.4\linewidth}
-      \centering
-      \includegraphics[height=3cm,width=6cm]{網格50mm-2}
-      \caption{\Large 較粗網格所得應力雲圖}
-      \label{網格50mm-2}
-    \end{minipage}
-  \end{center}
 \end{figure}
 
 \item 網格質量:指網格型狀的合理性，質量的好壞將直接影響計算精度，質量較差的除了造成局部的計算精度偏差甚至會直接終止計算，因此在重要部位時應該確保其擁有高品質的表現。
