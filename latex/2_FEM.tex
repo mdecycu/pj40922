@@ -84,12 +84,9 @@
 \item 對於三角形元素而言，其計算方法如下:\\
 \[
 \begin{aligned}
-\sigma x&=\\
-&\left( \dfrac{1}{\Delta }\right) \times \left[ \sigma _{1}\times \left( y_{2}-y_{3}\right) +\sigma _{2}\times \left( y_{3}-y_{1}\right) +\sigma _{3}\times \left( y_{1}-y_{2}\right) \right]\\
-\sigma y&=\\
-&\left( \dfrac{1}{\Delta }\right) \times \left[ \sigma _{1}\times \left( x_{3}-x_{2}\right) +\sigma _{2}\times \left( x_{1}-x_{3}\right) +\sigma _{3}\times \left( x_{2}-x_{1}\right) \right]\\
-\tau xy&=\\
-&\left( \dfrac{1}{\Delta }\right) \times \left[ \tau _{1}\times \left( x_{3}-x_{2}\right) +\tau _{2}\times \left( x_{1}-x_{3}\right) +\tau _{3}\times \left( x_{2}-x_{1}\right) \right]\\
+\sigma x&=\left( \dfrac{1}{\Delta }\right) \times \left[ \sigma _{1}\times \left( y_{2}-y_{3}\right) +\sigma _{2}\times \left( y_{3}-y_{1}\right) +\sigma _{3}\times \left( y_{1}-y_{2}\right) \right]\\
+\sigma y&=\left( \dfrac{1}{\Delta }\right) \times \left[ \sigma _{1}\times \left( x_{3}-x_{2}\right) +\sigma _{2}\times \left( x_{1}-x_{3}\right) +\sigma _{3}\times \left( x_{2}-x_{1}\right) \right]\\
+\tau xy&=\left( \dfrac{1}{\Delta }\right) \times \left[ \tau _{1}\times \left( x_{3}-x_{2}\right) +\tau _{2}\times \left( x_{1}-x_{3}\right) +\tau _{3}\times \left( x_{2}-x_{1}\right) \right]\\
 \end{aligned}
 \]
 其中，σx, σy, τxy 分別表示在 x, y 方向上的正應力和剪應力，σ1, σ2, σ3 表示每個節點上的應力，τ1, τ2, τ3 表示每個節點上的剪應力，Δ 表示三角形單元的面積。\\
@@ -97,9 +94,12 @@
 \item 對於四邊形元素而言，其計算方法如下:\\
 \[
 \begin{aligned}
-\sigma _{x}&=\left( \dfrac{1}{4t}\right) \times \left[ \sigma _{1}\times \left( y_{4}-y_{2}\right) +\sigma _{2}\times \left( y_{1}-y_{3}\right) +\sigma _{3}\times \left( y_{2}-y_{4}\right) +\sigma _{4}\times \left( y_{3}-y_{1}\right) \right]\\
-\sigma _{y}&=\left( \dfrac{1}{4t}\right) \times \left[ \sigma _{1}\times \left( x_{2}-x_{4}\right) +\sigma _{2}\times \left( x_{3}-x_{1}\right) +\sigma _{3}\times \left( x_{4}-x_{2}\right) +\sigma _{4}\times \left( x_{1}-x_{4}\right) \right]\\
-\tau xy&=\left( \dfrac{1}{4t}\right) \times \left[ \tau _{1}\times \left( x_{2}-x_{4}\right) +\tau _{2}\times \left( x_{3}-x_{1}\right) +\tau 3\times \left( x_{4}-x_{2}\right) +\tau 4\times \left( x_{1}-x_{3}\right) \right]\\
+\sigma _{x}&\\
+=&\left( \dfrac{1}{4t}\right) \times \left[ \sigma _{1}\times \left( y_{4}-y_{2}\right) +\sigma _{2}\times \left( y_{1}-y_{3}\right) +\sigma _{3}\times \left( y_{2}-y_{4}\right) +\sigma _{4}\times \left( y_{3}-y_{1}\right) \right]\\
+\sigma _{y}&\\
+=&\left( \dfrac{1}{4t}\right) \times \left[ \sigma _{1}\times \left( x_{2}-x_{4}\right) +\sigma _{2}\times \left( x_{3}-x_{1}\right) +\sigma _{3}\times \left( x_{4}-x_{2}\right) +\sigma _{4}\times \left( x_{1}-x_{4}\right) \right]\\
+\tau xy&\\
+=&\left( \dfrac{1}{4t}\right) \times \left[ \tau _{1}\times \left( x_{2}-x_{4}\right) +\tau _{2}\times \left( x_{3}-x_{1}\right) +\tau 3\times \left( x_{4}-x_{2}\right) +\tau 4\times \left( x_{1}-x_{3}\right) \right]\\
 \end{aligned}
 \]
 其中，σx, σy, τxy 分別表示在 x, y 方向上的正應力和剪應力，σ1, σ2, σ3, σ4 表示每個節點上的應力，τ1, τ2, τ3, τ4 表示每個節點上的剪應力，t 表示四邊形單元的厚度。
@@ -114,9 +114,12 @@
 \item 對於三角形元素而言，其計算方法如下:\\
 \[
 \begin{aligned}
-\varepsilon x&=\left( \dfrac{1}{\Delta }\right) \times \left[ \varepsilon 1\times \left( y_{2}-y_{3}\right) +\varepsilon 2\times \left( y_{3}-y_{1}\right) +\varepsilon 3\times \left( y_{1}-y_{2}\right) \right]\\
-\varepsilon y&=\left( \dfrac{1}{\Delta }\right) \times \left[ \varepsilon 1\times \left( x_{3}-x_{2}\right) +\varepsilon 2\times \left( x_{1}-x_{3}\right) +\varepsilon 3\times \left( x_{2}-x_{1}\right) \right]\\
-\gamma xy&=\left( \dfrac{1}{\Delta }\right) \times \left[ \gamma _{1}\times \left( x_{3}-x_{2}\right) +\gamma _{2}\times \left( x_{1}-x_{3}\right) +r_{3}\times \left( x_{2}-x_{1}\right) \right]\\
+\varepsilon x&\\
+=&\left( \dfrac{1}{\Delta }\right) \times \left[ \varepsilon 1\times \left( y_{2}-y_{3}\right) +\varepsilon 2\times \left( y_{3}-y_{1}\right) +\varepsilon 3\times \left( y_{1}-y_{2}\right) \right]\\
+\varepsilon y&\\
+=&\left( \dfrac{1}{\Delta }\right) \times \left[ \varepsilon 1\times \left( x_{3}-x_{2}\right) +\varepsilon 2\times \left( x_{1}-x_{3}\right) +\varepsilon 3\times \left( x_{2}-x_{1}\right) \right]\\
+\gamma xy&\\
+=&\left( \dfrac{1}{\Delta }\right) \times \left[ \gamma _{1}\times \left( x_{3}-x_{2}\right) +\gamma _{2}\times \left( x_{1}-x_{3}\right) +r_{3}\times \left( x_{2}-x_{1}\right) \right]\\
 \end{aligned}
 \]
 其中，εx, εy 分別表示在 x, y 方向上的應變，γxy 表示剪應變，ε1, ε2, ε3 分別表示每個節點上的應變，γ1, γ2, γ3 表示每個節點上的剪應變，Δ 表示三角形單元的面積。\\
@@ -124,9 +127,12 @@
 \item 對於四邊形元素而言，其計算方法如下:\\
 \[
 \begin{aligned}
-\varepsilon _{x}&=\left( \dfrac{1}{4t}\right) \times \left[ \varepsilon _{1}\times \left( y_{4}-y_{2}\right) +\varepsilon _{2}\times \left( y_{1}-y_{3}\right) +\varepsilon _{3}\times \left( y_{2}-y_{4}\right) +\varepsilon _{4}\times \left( y_{3}-y_{1}\right) \right]\\
-\varepsilon _{y}&=\left( \dfrac{1}{4t}\right) \times \left[ \varepsilon _{1}\times \left( x_{2}-x_{4}\right) +\varepsilon _{2}\times \left( x_{3}-x_{1}\right) +\varepsilon _{3}\times \left( x_{4}-x_{2}\right) +\varepsilon _{4}\times \left( x_{1}-x_{4}\right) \right]\\
-\gamma xy&=\left( \dfrac{1}{4t}\right) \times \left[ \gamma _{1}\times \left( x_{2}-x_{4}\right) +\gamma _{2}\times \left( x_{3}-x_{1}\right) +\gamma 3\times \left( x_{4}-x_{2}\right) +\gamma 4\times \left( x_{1}-x_{3}\right) \right]\\
+\varepsilon _{x}&\\
+=&\left( \dfrac{1}{4t}\right) \times \left[ \varepsilon _{1}\times \left( y_{4}-y_{2}\right) +\varepsilon _{2}\times \left( y_{1}-y_{3}\right) +\varepsilon _{3}\times \left( y_{2}-y_{4}\right) +\varepsilon _{4}\times \left( y_{3}-y_{1}\right) \right]\\
+\varepsilon _{y}&\\
+=&\left( \dfrac{1}{4t}\right) \times \left[ \varepsilon _{1}\times \left( x_{2}-x_{4}\right) +\varepsilon _{2}\times \left( x_{3}-x_{1}\right) +\varepsilon _{3}\times \left( x_{4}-x_{2}\right) +\varepsilon _{4}\times \left( x_{1}-x_{4}\right) \right]\\
+\gamma xy&\\
+=&\left( \dfrac{1}{4t}\right) \times \left[ \gamma _{1}\times \left( x_{2}-x_{4}\right) +\gamma _{2}\times \left( x_{3}-x_{1}\right) +\gamma 3\times \left( x_{4}-x_{2}\right) +\gamma 4\times \left( x_{1}-x_{3}\right) \right]\\
 \end{aligned}
 \]
 其中，εx, εy 分別表示在 x, y 方向上的應變，γxy 表示剪應變，ε1, ε2, ε3, ε4 分別表示每個節點上的應變，γ1, γ2, γ3, γ4 表示每個節點上的剪應變，t 表示四邊形單元的厚度。
