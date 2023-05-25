@@ -36,6 +36,7 @@
 \begin{itemize}
 \item 元素質量評價指標
 \end{itemize}
+
 \begin{enumerate}
 \item 單元的邊長比、面積比及體積比，理想的邊長比為1，以正三角形、正四面體、正六面體為參考基準。
 \item 扭曲度:單元內部扭轉及面外的翹曲程度。
@@ -81,14 +82,14 @@
 \newpage
 %--------------------------第二章/有限元計算公式--------------------------%
 \section{有限元計算公式}
-對於有限元素法代入模型的各種問題求解，以下有著幾種常用計算公式，分別對三角形元素和四角形元素及各式運動方程進行計算。\\
+對於有限元素法代入模型的各種問題求解，以下有著幾種常用計算公式，分別對三角形元素和四角形元素及各式運動方程進行計算。\
 %---------------------{應力計算}---------------------%
 \begin{itemize}
 \item 應力計算
 \end{itemize}
 
 \begin{enumerate}
-\item 對於三角形元素而言，其計算方法如下:\\
+\item 對於三角形元素而言，其計算方法如下:\
 \[
 \begin{aligned}
 \sigma x=&\left( \dfrac{1}{\Delta }\right) \times \left[ \sigma _{1}\times \left( y_{2}-y_{3}\right) +\sigma _{2}\times \left( y_{3}-y_{1}\right) +\sigma _{3}\times \left( y_{1}-y_{2}\right) \right]\\
@@ -96,9 +97,9 @@
 \tau xy=&\left( \dfrac{1}{\Delta }\right) \times \left[ \tau _{1}\times \left( x_{3}-x_{2}\right) +\tau _{2}\times \left( x_{1}-x_{3}\right) +\tau _{3}\times \left( x_{2}-x_{1}\right) \right]\\
 \end{aligned}
 \]
-其中，σx, σy, τxy 分別表示在 x, y 方向上的正應力和剪應力，σ1, σ2, σ3 表示每個節點上的應力，τ1, τ2, τ3 表示每個節點上的剪應力，Δ 表示三角形單元的面積。\\
+其中，σx, σy, τxy 分別表示在 x, y 方向上的正應力和剪應力，σ1, σ2, σ3 表示每個節點上的應力，τ1, τ2, τ3 表示每個節點上的剪應力，Δ 表示三角形單元的面積。\
 
-\item 對於四邊形元素而言，其計算方法如下:\\
+\item 對於四邊形元素而言，其計算方法如下:\
 \[
 \begin{aligned}
 \sigma _{x}=&\left( \dfrac{1}{4t}\right) \times \left[ \sigma _{1}\times \left( y_{4}-y_{2}\right) +\sigma _{2}\times \left( y_{1}-y_{3}\right) +\sigma _{3}\times \left( y_{2}-y_{4}\right) +\sigma _{4}\times \left( y_{3}-y_{1}\right) \right]\\
@@ -108,14 +109,13 @@
 \]
 其中，σx, σy, τxy 分別表示在 x, y 方向上的正應力和剪應力，σ1, σ2, σ3, σ4 表示每個節點上的應力，τ1, τ2, τ3, τ4 表示每個節點上的剪應力，t 表示四邊形單元的厚度。
 \end{enumerate}
-\newpage
 
 %-------------------{有限元素應力計算公式}------------------------%
 \begin{itemize}
 \item 有限元素應力計算公式
 \end{itemize}
 \begin{enumerate}
-\item 對於三角形元素而言，其計算方法如下:\\
+\item 對於三角形元素而言，其計算方法如下:\
 \[
 \begin{aligned}
 \varepsilon x=&\left( \dfrac{1}{\Delta }\right) \times \left[ \varepsilon 1\times \left( y_{2}-y_{3}\right) +\varepsilon 2\times \left( y_{3}-y_{1}\right) +\varepsilon 3\times \left( y_{1}-y_{2}\right) \right]\\
@@ -123,9 +123,8 @@
 \gamma xy=&\left( \dfrac{1}{\Delta }\right) \times \left[ \gamma _{1}\times \left( x_{3}-x_{2}\right) +\gamma _{2}\times \left( x_{1}-x_{3}\right) +r_{3}\times \left( x_{2}-x_{1}\right) \right]\\
 \end{aligned}
 \]
-其中，εx, εy 分別表示在 x, y 方向上的應變，γxy 表示剪應變，ε1, ε2, ε3 分別表示每個節點上的應變，γ1, γ2, γ3 表示每個節點上的剪應變，Δ 表示三角形單元的面積。\\
-
-\item 對於四邊形元素而言，其計算方法如下:\\
+其中，εx, εy 分別表示在 x, y 方向上的應變，γxy 表示剪應變，ε1, ε2, ε3 分別表示每個節點上的應變，γ1, γ2, γ3 表示每個節點上的剪應變，Δ 表示三角形單元的面積。\
+\item 對於四邊形元素而言，其計算方法如下:\
 \[
 \begin{aligned}
 \varepsilon _{x}=&\left( \dfrac{1}{4t}\right) \times \left[ \varepsilon _{1}\times \left( y_{4}-y_{2}\right) +\varepsilon _{2}\times \left( y_{1}-y_{3}\right) +\varepsilon _{3}\times \left( y_{2}-y_{4}\right) +\varepsilon _{4}\times \left( y_{3}-y_{1}\right) \right]\\
@@ -135,24 +134,22 @@
 \]
 其中，εx, εy 分別表示在 x, y 方向上的應變，γxy 表示剪應變，ε1, ε2, ε3, ε4 分別表示每個節點上的應變，γ1, γ2, γ3, γ4 表示每個節點上的剪應變，t 表示四邊形單元的厚度。
 \end{enumerate}
-\newpage
-
 %-----------有限元素動力學分析公式-------------%
 \begin{itemize}
 \item 有限元素動力學分析公式
 \end{itemize}
 \begin{enumerate}
 \item 結構的運動方程:\\
-在有限元素動力學分析中，結構的運動方程通常採用以下形式表示:\\
+在有限元素動力學分析中，結構的運動方程通常採用以下形式表示:\
 \[
 \begin{aligned}
 \left[ M\right] \times \left\{ u''\right\} +\left[ C\right] \times \left\{ u'\right\} +\left[ K\right] \times \left\{ u\right\}=&\left\{ F\left( t\right) \right\}\\
 \end{aligned}
 \]
-其中，[M]、[C] 和 [K] 分別表示結構的質量、阻尼和剛度矩陣，{¨u}、{˙u} 和 {u} 分別表示結構的加速度、速度和位移矢量，{F(t)} 表示結構受到的外部激勵矢量。\\
+其中，[M]、[C] 和 [K] 分別表示結構的質量、阻尼和剛度矩陣，{¨u}、{˙u} 和 {u} 分別表示結構的加速度、速度和位移矢量，{F(t)} 表示結構受到的外部激勵矢量。\
 
 \item 求解運動方程:\\
-通過對運動方程進行離散化處理，可以得到結構的位移、速度和加速度的數值解。通常採用時間步進法求解運動方程，其中最常用的是 Newmark-β 方法，其求解公式如下：\\
+通過對運動方程進行離散化處理，可以得到結構的位移、速度和加速度的數值解。通常採用時間步進法求解運動方程，其中最常用的是 Newmark-β 方法，其求解公式如下：\
 \[
 \begin{aligned}
 \left\{ u\left( t+\Delta t\right) \right\}=&\left\{ u\left( t\right) \right\} +\left\{ u'\left( t\right) \right\} \Delta t+\left( \dfrac{1}{2}-\beta \right) \times \left\{ u''\left( t\right) \right\} \Delta t^{2}+\beta \left\{ u''\left( t+\Delta t\right) \right\} \Delta t^{2}\\
@@ -163,7 +160,7 @@
 \newpage
 
 \item 應力計算公式\
-在求解結構動態響應的過程中，通常需要計算結構內部的應力分佈情況。對於有限元素動力學分析而言，常用的應力計算公式是根據結構位移和應變之間的關係推導而來的。具體來說，可以採用以下公式進行應力計算:\\
+在求解結構動態響應的過程中，通常需要計算結構內部的應力分佈情況。對於有限元素動力學分析而言，常用的應力計算公式是根據結構位移和應變之間的關係推導而來的。具體來說，可以採用以下公式進行應力計算:\
 \[
 \begin{aligned}
 \left\{ \sigma \right\}=&\left[ D\right] \times \left\{ \varepsilon \right\}
@@ -201,8 +198,6 @@ N=\dfrac{1}{\left( \Delta ^{\sigma }/2S\right) ^{m}}\\
 \item 疲勞壽命修正公式
 在實際應用中，疲勞壽命計算公式需要考慮多種因素的影響，如應力比、材料強度和載荷歷史等。常用的疲勞壽命修正公式包括 Goodman、Soderberg、Walker 和 Morrow 等，其表示形式可以根據具體的應用要求進行選擇。
 \end{enumerate}
-\newpage
-
 %-----------------------第2章/邊界條件--------------------------%
 \section{邊界條件}
 分為兩種邊界條件，為位移值或施加力條件
@@ -227,8 +222,6 @@ N=\dfrac{1}{\left( \Delta ^{\sigma }/2S\right) ^{m}}\\
 \end{itemize}
 
 \end{enumerate}
-\newpage
-
 %-----------------------第2章/分析步驟--------------------------%
 \section{分析步驟}
 \begin{itemize}
