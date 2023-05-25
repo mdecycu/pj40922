@@ -35,6 +35,56 @@
 設定前進動作時，先將左前腿及右後腿往前抬，並同時將右前腿及左後腿往後踢設定前抬左前腿時，左前腿的前抬角度必須比右後腿高，這樣才不會使左前腿觸碰到地面而造成反力無法前進。\\
 設定後退動作:先將左前腿及右後腿往後抬，同時將右前腿及左後腿往前踢，設定後抬右後腿時，右後腿的後抬角度必須比左前腿高，這樣才不會使右後腿觸碰到地面而造成反力無法後退，完成前面的動作後，將左右動作對調即可達成左右腿互換的動作。\\
 
+\begin{lstlisting}
+from zmqRemoteApi import RemoteAPIClient
+import keyboard
+import time
+
+# 利用 zmqRemoteApi 中的 RemoteAPIClient 連結場景
+client = RemoteAPIClient('localhost', 23000)
+
+print('Program started')
+sim = client.getObject('sim')
+sim.startSimulation()
+print('Simulation started')
+
+#調用需要控制的轉軸
+joint_1_1 = sim.getObject('/joint_1_1')
+joint_1_2 = sim.getObject('/joint_1_2')
+joint_2_1 = sim.getObject('/joint_2_1')
+joint_2_2 = sim.getObject('/joint_2_2')
+joint_3_1 = sim.getObject('/joint_3_1')
+joint_3_2 = sim.getObject('/joint_3_2')
+joint_4_1 = sim.getObject('/joint_4_1')
+joint_4_2 = sim.getObject('/joint_4_2')
+    
+#定義控制轉軸函數 
+def setJointPosition(target_angle1,target_angle2,target_angle3,target_angle4,target_angle5,target_angle6,target_angle7,target_angle8):
+        sim.setJointTargetPosition(joint_1_1, target_angle1 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_1_2, target_angle2 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_2_1, target_angle3 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_2_2, target_angle4 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_3_1, target_angle5 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_3_2, target_angle6 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_4_1, target_angle7 * 3.14159 / 180)
+        sim.setJointTargetPosition(joint_4_2, target_angle8 * 3.14159 / 180)
+
+#使用鍵盤移動模型
+while True:
+    if keyboard.is_pressed('q'):
+        setJointPosition(20,20,-30,0,20,10,-30,0)
+        time.sleep(0.5)
+        setJointPosition(-30,0,20,10,-30,0,20,20)
+        time.sleep(1)
+    elif keyboard.is_pressed('w'):
+        setJointPosition(-30,0,20,10,-30,0,20,5)
+        time.sleep(0.5)
+        setJointPosition(20,5,-30,10,20,10,-30,10)
+        time.sleep(1)
+    else:
+        setJointPosition(-10,0,-10,0,-10,0,-10,0)
+\end{lstlisting}
+
 \section{運動模擬}
 我們可以將四足機器人運動模式分為以下三種，分別為:\
 \begin{enumerate}
