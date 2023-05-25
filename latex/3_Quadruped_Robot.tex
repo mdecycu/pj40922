@@ -155,9 +155,9 @@
   \hfill
   \begin{minipage}[t]{0.45\linewidth}
     \centering
-    \includegraphics[height=4cm,width=4cm]{Forward kinematics formula}
-    \caption{四連桿機構}
-    \label{Forward kinematics formula}
+    \includegraphics[height=4cm,width=4cm]{步行機構}
+    \caption{步行機構}
+    \label{步行機構}
   \end{minipage}
 \end{figure}
 
@@ -183,18 +183,15 @@ z^{2}=\sqrt{L_{1}^{2}+L_{2}^{2}-2\times L_{1}\times L_{2}\times \cos \left( 180-
 \end{aligned}
 \]
 
-B連桿部份則為單支連桿組成，套入三角函數的計算方式如下:\\
-
+B連桿部份則為單支連桿組成，套入三角函數的計算方式如下:\
 \[
 \begin{aligned}
 x'=L_{4}\cos \left( \alpha +\theta \right)\\
 y'=L_{4}\sin \left( \alpha +\theta \right)
 \end{aligned}
 \]
-將A及B部份套入求出末端點座標:\\
-
-假設
-L3:L3'=3:2
+將A及B部份套入求出末端點座標:\
+假設L3:L3'=3:2\
 \[
 \begin{aligned}
 x''=\left( x'-x\right) \times \dfrac{L3}{L3'}\\
@@ -202,7 +199,7 @@ y''=\left( y'-y\right) \times \dfrac{L3}{L3'}
 \end{aligned}
 \]
 
-由此公式可得出目標末端點相對於基座連結關節的座標，以利於控制。\\
+由此公式可得出目標末端點相對於基座連結關節的座標，以利於控制。\
 
 %-------------------逆向運動學----------------%
 \subsection{逆向運動學}
