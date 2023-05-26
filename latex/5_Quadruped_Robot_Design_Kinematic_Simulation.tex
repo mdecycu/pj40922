@@ -42,12 +42,15 @@ import time
 
 # 利用 zmqRemoteApi 中的 RemoteAPIClient 連結場景
 client = RemoteAPIClient('localhost', 23000)
+\end{lstlisting}
 
+\begin{lstlisting}
 print('Program started')
 sim = client.getObject('sim')
 sim.startSimulation()
 print('Simulation started')
-
+\end{lstlisting}
+\begin{lstlisting}
 #調用需要控制的轉軸
 joint_1_1 = sim.getObject('/joint_1_1')
 joint_1_2 = sim.getObject('/joint_1_2')
@@ -57,7 +60,8 @@ joint_3_1 = sim.getObject('/joint_3_1')
 joint_3_2 = sim.getObject('/joint_3_2')
 joint_4_1 = sim.getObject('/joint_4_1')
 joint_4_2 = sim.getObject('/joint_4_2')
-    
+\end{lstlisting}    
+\begin{lstlisting}
 #定義控制轉軸函數 
 def setJointPosition(target_angle1,target_angle2,target_angle3,target_angle4,target_angle5,target_angle6,target_angle7,target_angle8):
         sim.setJointTargetPosition(joint_1_1, target_angle1 * 3.14159 / 180)
@@ -68,7 +72,8 @@ def setJointPosition(target_angle1,target_angle2,target_angle3,target_angle4,tar
         sim.setJointTargetPosition(joint_3_2, target_angle6 * 3.14159 / 180)
         sim.setJointTargetPosition(joint_4_1, target_angle7 * 3.14159 / 180)
         sim.setJointTargetPosition(joint_4_2, target_angle8 * 3.14159 / 180)
-
+\end{lstlisting}
+\begin{lstlisting}
 #使用鍵盤移動模型
 while True:
     if keyboard.is_pressed('q'):
