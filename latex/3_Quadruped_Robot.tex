@@ -181,36 +181,45 @@ A部分:由馬達(一)所控制的結構為零件Leg1-1(黃)和Leg1-5(綠)。\
 B部分:由馬達(二)所驅動的結構為零件Leg2(藍)。\
 連桿Leg3(紅)B部份所控制，被動對Leg4(青)施以推力及拉力，因此Leg4(青)中間受A部分連桿約束後將會控制Leg6(橡膠套)做動。\\
 
-可見A部分為二連桿機構組成，因此使用三角函數即可分別計算出末端點的相對座標位置，因此可以繪出連桿圖及列出算式如下:\
+
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[angle=90,width=10cm]{Forward kinematics formula}
 \caption{\Large 連桿圖}\label{Forward kinematics formula}
 \end{center}
 \end{figure}
+
+可見A部分為二連桿機構組成，因此使用三角函數即可分別計算出末端點的相對座標位置，因此可以繪出連桿圖及列出算式如下:\
 (X，Y)座標
 \[
 \begin{aligned}
-x&=L_{1}\cos \alpha +L_{2}\cos \left( \alpha +\beta \right)\\
-y&=L_{1}\sin \alpha +L_{2}\sin \left( \alpha +\beta \right)\\
+x&=L_{2}\cos \alpha +L_{3}\cos \left( \alpha +\beta \right)\\
+y&=L_{2}\sin \alpha +L_{3}\sin \left( \alpha +\beta \right)\\
 \end{aligned}
 \]
 B連桿部份則為單支連桿組成，套入三角函數的計算方式如下:\\
 \[
 \begin{aligned}
-x'=L_{4}\cos \left( \alpha +\theta \right)\\
-y'=L_{4}\sin \left( \alpha +\theta \right)\\
+x_{1}&=L_{1}\cos \left( \alpha +\theta \right)\\
+y_{1}&=L_{1}\sin \left( \alpha +\theta \right)\\
 \end{aligned}
 \]
-將A及B部份套入求出末端點座標:\\
-L3:為(x",y")至(x,y)長度
-L3':為(x',y')至(x,y)長度
-
+求出A部分(x,y)座標連接到末端點(x_{3},y_{3})，再以內分點公式求出L_{1}延伸至L_{4}之焦點:\\
+L_{4}:為(x_{3},y_{3})至(x_{1},y_{1})長度
+L_{4}':為(x_{2},y_{2})至(x,y)長度
+\[
 \begin{align*}
-x'' &= \frac{L_{3}x - (L_{3}-L_{3}')x'}{L_{3}'} \\
-y'' &= \frac{L_{3}y - (L_{3}-L_{3}')y'}{L_{3}'}
+x_{2}&= \frac{(L_{1} + L_{1}') \x_{1}}{L_{1}} \\
+y_{2}&= \frac{(L_{1} + L_{1}') \y_{1}}{L_{1}}
 \end{align*}
-
+\]
+找出點(x,y)及點{x_{2},y_{2}即可使用內分點公式求出末段點與地面之交點:\\
+\[
+\begin{align*}
+x_{3}&= \frac{(L_{4} \x_{2} - (L_{4} - L_{4}') \x}{L_{4}'} \\
+y_{3}&= \frac{(L_{4} \y_{2} - (L_{4} - L_{4}') \y}{L_{4}'}
+\end{align*}
+\]
 由此公式得出目標末端點相對至基座連結關節座標，以利於控制\\
 
 \subsection{逆向運動學}
