@@ -1,3 +1,4 @@
+
 \chapter{四足機器人}
 %--------------------應用範圍反作用--------------------%
 \section{應用範圍及作用}
@@ -203,10 +204,14 @@ y'=L_{4}\sin \left( \alpha +\theta \right)\\
 將A及B部份套入求出末端點座標:\\
 L3:為(x",y")至(x,y)長度
 L3':為(x',y')至(x,y)長度
-\begin{center}
-$x"=\dfrac{L_{3}\x-{L_{3}-L_{3}'}\x'}{L_{3}'}$
-$y"=\dfrac{L_{3}\y-{L_{3}-L_{3}'}\y'}{L_{3}'}$
-\end{center}
+\begin{document}
+
+\begin{align*}
+x'' &= \frac{L_{3}x - (L_{3}-L_{3}')x'}{L_{3}'} \\
+y'' &= \frac{L_{3}y - (L_{3}-L_{3}')y'}{L_{3}'}
+\end{align*}
+
+\end{document}
 由此公式得出目標末端點相對至基座連結關節座標，以利於控制\\
 
 \subsection{逆向運動學}
