@@ -193,13 +193,6 @@ x&=L_{1}\cos \alpha +L_{2}\cos \left( \alpha +\beta \right)\\
 y&=L_{1}\sin \alpha +L_{2}\sin \left( \alpha +\beta \right)\\
 \end{aligned}
 \]
-Z長度
-\[
-\begin{aligned}
-z^{2}&=\sqrt{L_{1}^{2}+L_{2}^{2}-2\times L_{1}\times L_{2}\times \cos \left( 180-\beta \right) }\\
-\phi&=\cos ^{-1}\dfrac{z^{2}+L_{1}^{2}-L_{2}^{2}}{2z\times L_{1}}\\
-\end{aligned}
-\]
 B連桿部份則為單支連桿組成，套入三角函數的計算方式如下:\\
 \[
 \begin{aligned}
@@ -210,12 +203,10 @@ y'=L_{4}\sin \left( \alpha +\theta \right)\\
 將A及B部份套入求出末端點座標:\\
 L3:\為(x",y")至(x,y)長度
 L3':\為(x',y')至(x,y)長度
-\[
-\begin{aligned}
-$$\x"=\frac{L_{3}\x-{L_{3}-L_{3}'}\x'}{L_{3}'}$$
-$$\y"=\frac{L_{3}\y-{L_{3}-L_{3}'}\y'}{L_{3}'}$$
-\end{aligned}
-\]
+
+$$\x"=\dfrac{L_{3}\x-{L_{3}-L_{3}'}\x'}{L_{3}'}$$
+$$\y"=\dfrac{L_{3}\y-{L_{3}-L_{3}'}\y'}{L_{3}'}$$
+
 由此公式得出目標末端點相對至基座連結關節座標，以利於控制\\
 
 \subsection{逆向運動學}
