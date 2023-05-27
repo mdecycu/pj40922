@@ -208,19 +208,24 @@ y_{1}&=L_{1}\sin \left( \alpha +\theta \right)\\
 \]
 
 求出A部分(x,y)座標連接到末端點$(x_3,y_3)$，再以內分點公式求出$L_1$延伸至$\L_4$之交點:\\
-\begin{center}
-$L_4:為(x_3,y_3)至(x_1,y_1)長度$
-$L_4':為$(x_2,y_2)$至(x,y)長度$
-\end{center}
-\begin{center}
-$x_2= \frac{(L_{1} + L_{1}') x_{1}}{L_{1}}$
-$y_2= \frac{(L_{1} + L_{1}') y_{1}}{L_{1}}$
-\end{center}
+$L_4:為(x_3,y_3)至(x_1,y_1)長度$ / $L_4':為$(x_2,y_2)$至(x,y)長度$
+
+\[
+\begin{aligned}
+x_{2}&= \frac{\left (L_{1} + L_{1}' \right) x_{1}}{L_{1}}
+y_{2}&= \frac{\left (L_{1} + L_{1}' \right) y_{1}}{L_{1}}
+\end{aligned}
+\]
+
 找出點(x,y)及點$(x_2,y_2)$即可使用內分點公式求出末段點與地面之交點:\\
-\begin{center}
-$x_3= \frac{L_{4} x_{2} - (L_{4} - L_{4}') x}{L_{4}'}$
-$y_3= \frac{L_{4} y_{2} - (L_{4} - L_{4}') y}{L_{4}'}$
-\end{center}
+
+\[
+\begin{aligned}
+x_{3}&= \frac{L_{4} x_{2} - \left (L_{4} - L_{4}' \right) x}{L_{4}'}
+y_{3}&= \frac{L_{4} y_{2} - \left (L_{4} - L_{4}' \right) y}{L_{4}'}
+\end{aligned}
+\]
+
 由此公式得出目標末端點相對至基座連結關節座標，以利於控制\\
 
 \subsection{逆向運動學}
