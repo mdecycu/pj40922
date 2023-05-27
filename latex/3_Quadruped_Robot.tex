@@ -50,91 +50,101 @@
 上圖所示為本次專題研究的有限元素法的分析對象"四足機器人"，由四個步行機構及一個本體和馬達及連接板組成硬體結構，因其有負重及穩定性的需求，所以使用上述所講的四連桿閉環機構，如(圖 \ref{四足機器狗})展示了機器狗的的站立姿態，而下列(圖\ref{本體}至圖\ref{馬達底座})為各零件3D圖。\
 \newpage
 
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\begin{document}
 \begin{figure}[htbp]
-  \begin{minipage}[t]{0.3\linewidth}
+  \centering
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{本體}
     \caption{本體}
     \label{本體}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{馬達連接座}
     \caption{連接座}
     \label{馬達連接座}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{馬達連接座-2}
     \caption{連接座-2}
     \label{馬達連接座-2}
-  \end{minipage}
-\end{figure}
+  \end{subfigure}
 
-\begin{figure}[htbp]
-  \begin{minipage}[t]{0.3\linewidth}
+  \vspace{1cm} % 增加垂直間距
+
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{leg1-1}
     \caption{Leg1-1}
     \label{leg1-1}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{leg1-5}
     \caption{Leg1-5}
     \label{leg1-5}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{leg2}
     \caption{Leg2}
     \label{leg2}
-  \end{minipage}
-\end{figure}
+  \end{subfigure}
 
-\begin{figure}[htbp]
-  \begin{minipage}[t]{0.3\linewidth}
+  \vspace{1cm} % 增加垂直間距
+
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{leg3}
     \caption{Leg3}
     \label{leg3}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{leg4}
     \caption{Leg4}
     \label{leg4}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{leg6}
     \caption{Leg6}
     \label{leg6}
-  \end{minipage}
-\end{figure}
+  \end{subfigure}
 
-\begin{figure}[htbp]
-  \centering
-  \begin{minipage}[t]{0.3\linewidth}
+  \vspace{1cm} % 增加垂直間距
+
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{馬達軸}
     \caption{馬達軸}
     \label{馬達軸}
-  \end{minipage}
+  \end{subfigure}
   \hfill
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{subfigure}[t]{0.3\linewidth}
     \centering
     \includegraphics[height=4cm,width=4cm]{馬達底座}
     \caption{馬達底座}
     \label{馬達底座}
-  \end{minipage}
- \end{figure}
+  \end{subfigure}
+
+  \caption{圖片集合}
+  \label{fig:圖片集合}
+\end{figure}
+\end{document}
+
 \newpage
 
 %-------------四連桿機構運動學模型---------------%
