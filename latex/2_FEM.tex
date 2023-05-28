@@ -254,13 +254,37 @@ $$J=\operatorname{det}(\mathbf{F})=d V / d V_0$$
 體積因子J可以給出變形引起的體積變化。因此，應力張量可通過下式與之關聯\
 $$\mathbf{P}=J \sigma \mathbf{F}^{-T}$$
 通過引入一個稱為基爾霍夫應力張量（定義為$\tau=J \sigma$ ）的張量，可以進一步簡化這個公式及類似公式。基爾霍夫應力張量是一個幾乎沒有實際用途的物理量，但卻具有理論上的便利性。\\
-
-
-
-
-
-
-
+將動量方程的微分形式乘以速度矢量，並基於材料對其進行積分，可以得到以下方程：\\
+$$\frac{d}{d t} \int_V \frac{1}{2} \rho v^2 d V+\int_V \sigma: \mathbf{L} d V=\int_V \mathbf{f}_v \cdot \mathbf{v} d V+\int_{\partial V} \mathbf{t}_n \cdot \mathbf{v} d A$$
+這個方程給出了機械能平衡的積分形式，也稱為冪定理。速度的空間梯度為$\mathbf{L}=\nabla_x \mathbf{V}$，其中的運算符表示對兩個指標求和\
+$$\int_V \sigma: \mathbf{L} d V=\int_{V_0} \mathbf{P}: \dot{\mathbf{F}} d V_0$$
+變形分析頁面對速度梯度的特性進行了詳細論述。\\
+方程右側的兩個積分項分別表示體積力和表面力的功率輸入，它們分別是這些力在每單位時間內對材料所做的功。左側的項分別為動能變化率以及為體提供的應力功率。對於彈性材料，應力功率是應變能密度變化率。通過使用以下關係式:\
+$$
+\begin{aligned}
+& \sigma: \mathbf{L}=J^{-1} \mathbf{P} \mathbf{F}^T: \mathbf{L}= \\
+& =J^{-1} \mathbf{P}:(\mathbf{L} \cdot \mathbf{F})=J^{-1} \mathbf{P}: \dot{\mathbf{F}}
+\end{aligned}
+$$
+應力功率可以表示為以下等價形式：\\
+$$\int_V \sigma: \mathbf{L} d V=\int_{V_0} \mathbf{P}: \dot{\mathbf{F}} d V_0$$
+因此，我們得出這樣一個結論：第一類Piola-Kirchhoff 應力張量和變形梯度形成了能量共軛對。這種共軛對也可以稱為功率共軛 或功共軛 應力和應變測度。\\
+速度梯度可以分解為對稱和反對稱部分，分別稱為應變率張量$\left(\mathbf{L}_{\mathrm{d}}\right)$和自旋張量$\left(\mathbf{L}_{\mathrm{w}}\right)$。由於柯西應力張量是對稱的 $\sigma: \mathbf{L}=\sigma: \mathbf{L}_d$，，因此與柯西應力形成功率共軛的應變測量是應變率張量。後者也可以寫為\
+$\mathbf{L}_d=\mathbf{F}^{-T} \dot{\mathbf{E}} \mathbf{F}^{-1}$
+其中\
+$$\mathbf{E}=\frac{1}{2}\left(\mathbf{F}^T \mathbf{F}-\mathbf{I}\right)$$
+為格林-拉格朗日應變張量。由此應力功率積分可以改寫為：\\
+$$\int_V \sigma: \mathbf{L}_d d V=\int_{V_0} \mathbf{S}: \dot{\mathbf{E}} d V_0$$
+其中\
+$$\mathbf{S}=J \mathbf{F}^{-1} \sigma \mathbf{F}^{-T}$$
+稱為第二類Piola-Kirchhoff應力張量，這是一個對稱張量，與格林-拉格朗日應變形成能量共軛。\\
+第一類和第二類Piola-Kirchhoff 應力張量通過下式相關：\\
+$$\mathbf{P}=\mathbf{F S}=(\mathbf{I}+\nabla \mathbf{u}) \mathbf{S}$$
+基於此公式，我們可以將動量平衡方程改寫為：\\
+$$\rho_0 \frac{\partial^2 \mathbf{u}}{\partial t^2}=\mathbf{F}_V+\nabla_X \cdot[(\mathbf{I}+\nabla \mathbf{u}) \mathbf{S}]$$
+再結合以下形式的本構關係\
+$$\mathbf{S}=\mathbf{S}(\mathbf{E})$$
+可以形成位移矢量的封閉方程組。
 
 
 
