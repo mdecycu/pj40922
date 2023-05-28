@@ -223,6 +223,46 @@ $$
 
 \subsection{應力方程}
 
+作用在變形區域上的表面力可以表示為\
+$$d \mathbf{F}_s=\mathbf{t}_n d a=\mathbf{T}_N d A$$
+其中$\mathbf{t}_{\mathrm{n}}$稱為牽引力，而 $\mathbf{T} \mathrm{N}$通常稱為標稱牽引力，原因是它將實際變形狀態下的作用力與未變形區域關聯起來。
+此外，我們還可以基於法矢將牽引分量寫為以下線性展開式：\\
+$$T_i=P_{i J} N_J$$\
+在此處和下文中，假設對重複指標求和。空間分量和材料分量分別使用小寫和大寫字母。這種表示有時稱為柯西定律或柯西公式，僅適用於$P_{i J}$為特定二階張量的分量的情況。對於任意未變形的材料體積$V_0$ '，動量守恆可以用以下積分形式表示：\\
+$$\frac{d}{d t} \int_{V_0} \rho_0 \mathbf{v} d V=\int_{V_0} \mathbf{f}_V d V+\int_{\partial V_0} \mathbf{T} d A$$
+其中$\mathbf{f}_V$ 表示體積力\
+速度場根據位移場 $\mathbf{u}$計算為\
+$\mathbf{v}=\frac{\partial \mathbf{u}}{\partial t}(\mathbf{X}, t)$ 
+根據散度定理，使用柯西公式可以將表面積分轉換為體積積分：\\
+$$\int_{\partial V_0} T_i d A=\int_{\partial V_0} P_{i J} N_J d A=\int_{V_0} \frac{\partial P_{i J}}{\partial X_J} d V$$
+因此可以得到動量平衡方程的微分形式如下所示：\\
+$$\rho_0 \frac{\partial^2 u_i}{\partial t^2}=f_{V, i}+\frac{\partial P_{i, J}}{\partial X_J}$$
+或者使用張量符號:\\
+$$
+\rho_0 \frac{\partial^2 \mathbf{u}}{\partial t^2}=\mathbf{f}_V+\nabla_X \cdot \mathbf{P}^{\mathbf{T}}
+$$
+張量P稱為第一類Piola-Kirchhoff應力張量，它將空間方向的作用力與原始未變形構型中的區域關聯起來。量指標涉及不同的構型。有時這種數學對象稱為兩點張量。\\
+在實際的變形構型中，可以對牽引矢量$\mathrm{t}_{\mathrm{n}}$和材料體積應用類似的方法，可用下式表示：\\
+$$\mathbf{t}_n=\sigma_{i j} n_j \mathbf{e}_i$$
+張量$\sigma$ 稱為柯西應力張量或真實應力張量，原因是它表示與實際變形區域相關的實際構型中的力。由其空間分量表示。\\
+由於柯西應力張量和第一類Piola-Kirchhoff 應力張量對同一個表面力有著不同的表示，\\
+$$\mathbf{P N} d A=\sigma \mathbf{n} d a$$
+要確定這兩種應力測量方式之間的關係，我們可以使用Nanson公式 計算變形引起的面積變化，表示為\
+$$\mathbf{n} d a=J \mathbf{F}^{-T} \mathbf{N} d A$$
+其中，F為變形梯度張量，由此可得\
+$$J=\operatorname{det}(\mathbf{F})=d V / d V_0$$
+體積因子J可以給出變形引起的體積變化。因此，應力張量可通過下式與之關聯\
+$$\mathbf{P}=J \sigma \mathbf{F}^{-T}$$
+通過引入一個稱為基爾霍夫應力張量（定義為$\tau=J \sigma$ ）的張量，可以進一步簡化這個公式及類似公式。基爾霍夫應力張量是一個幾乎沒有實際用途的物理量，但卻具有理論上的便利性。\\
+
+
+
+
+
+
+
+
+
 \section{分析步驟}
 \begin{figure}[hbt!]
 \begin{center}
