@@ -110,10 +110,44 @@
 %--------------------------第二章/有限元計算公式--------------------------%
 \section{計算及公式介紹}
 此章節主要介紹常見的結構力學的有限元計算公式及方法順序，了解到平時由電腦計算的有限元素法及代數方程式，
+
 \subsection{變形分析}
 
-\subsection{應力分析}
+在有限元素分析中，通常使用格拉朗日公式，透過觀察材料的平移或旋轉來建立力學方程。
+在材料上設置隨意點(X)，，觀察點(X)隨時間(t)變化後的材料位移矢量u(X,t)，轉換為空間坐標系x=X+u即可以得到一個拉格朗日公式，只要材料為柔性體就會產生局部變化，此現象稱為應變或伸長，下列將透過多種方式來描述材料變形過程。\
 
+\begin{itemize}
+\item 變形梯度
+\end{itemize}
+
+變形梯度F定義為
+$$
+\mathbf{F}=\frac{\partial \mathbf{x}}{\partial \mathbf{X}}=\mathbf{I}+\frac{\partial \mathbf{u}}{\partial \mathbf{X}}
+$$
+其中, $\mathbf{I}$ 等同張量, 展開為矩陣形式為:\
+$$
+\mathbf{F}=\left[\begin{array}{lll}
+\frac{\partial x}{\partial X} & \frac{\partial x}{\partial Y} & \frac{\partial x}{\partial Z} \\
+\frac{\partial y}{\partial X} & \frac{\partial y}{\partial Y} & \frac{\partial y}{\partial Z} \\
+\frac{\partial z}{\partial X} & \frac{\partial z}{\partial Y} & \frac{\partial z}{\partial Z}
+\end{array}\right]=\left[\begin{array}{ccc}
+1+\frac{\partial u}{\partial X} & \frac{\partial u}{\partial Y} & \frac{\partial u}{\partial Z} \\
+\frac{\partial v}{\partial X} & 1+\frac{\partial v}{\partial Y} & \frac{\partial v}{\partial Z} \\
+\frac{\partial w}{\partial X} & \frac{\partial w}{\partial Y} & 1+\frac{\partial w}{\partial Z}
+\end{array}\right]
+$$
+上述矩陣包含材料局部旋轉和變形的完整解釋，其中還顯示許多訊息，例如:\
+由於dx=FdX，未變形體dX中小線段是如何旋轉並拉伸，成為變形體dX中的線段，我們將F張量看做一個矩陣，第一列提供線段最開始沿X方向的大小和方向等信息。從數學角度來看，F是從X改變到x雅可比矩陣，因此它的行列為式J=det(F)為局體體積比例因子。對於不可壓縮材料，J=1。
+極分析定理表明，任何二階張量都可以分解為純轉動和對稱張量的成績，利用這一定理將剛體轉動與變形分開:\
+F=RU\
+這可以解釋為先發生變形（伸長張量U），再進行剛性旋轉（旋轉矩陣R）。如此一來，如果沒有旋轉，右伸長張量則為變形梯度，因此U的解釋與F類似。\
+同樣也可以將變形梯度分解為\
+F=VR\
+此過程中，會先發生剛體轉動，然後轉動的體發生形變，變形透過左伸長量(V)描述。
+這兩個伸長張量(U)、(V)通過純轉向有著關聯，例如$\mathbf{V}=\mathbf{F R}^T=\mathbf{R} \mathbf{U} \mathbf{R}^T$。事實上，此處旋轉矩陣的轉置也是其自身的逆 $\left(\mathbf{R}^T \mathbf{R}=\mathbf{R R}^T=\mathbf{I}\right)$ 。
+
+
+\subsection{應力分析}
 
 
 \section{分析步驟}
