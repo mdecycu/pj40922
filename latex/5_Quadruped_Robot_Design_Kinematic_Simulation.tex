@@ -3,18 +3,29 @@
 透過上述動作即可以找出作動角度範圍，用以推導運動方程及最大受力角度、使其運動軌跡和姿態符合設計需求，此步驟所解將用於有限元素分析。\
 運用RemoteAPI將模型透過網際方式進行模擬，可用於遠端模擬並控制，可作為教學及演示用途。\\
 
-\section{CoppeliaSim模型設定}
-首先將模型轉化成STL檔案使其能被CoppeliaSim開啟，利用移動功能將模型移動至合適位置，點選模型使用爆炸功能將模型由一體分為數個零件，插入轉軸並設定中修改零件的重量等參數，導入Pythan程式碼，使用播放查看個機件的姿態、作動是否符合設計，完成之後就可以對模型進行分析並帶入負載求解。\\
+\section{模型及環境設定}
+\begin{figure}[hbt!]
+\center
+\includegraphics[width=13cm]{cop組裝步驟}
+\caption{\Large 組裝步驟}\label{cop組裝步驟}
+\end{figure}
+在此帶入所設計的四足機器狗，在每個旋轉關節插入轉軸並設定中修改零件的重量等參數，並設定環境參數給予物理引擎，令模型能夠以最為真實的情況進行模擬。\\
+
+\begin{figure}[hbt!]
+\center
+\includegraphics[width=14cm]{shape-2(cop)}
+\caption{\Large 零件參數及碰撞設定}\label{shape-2(cop)}
+\end{figure}
 
 
 \section{Python控制程式}
-運動模擬主要以Python程式碼進行控制，而程式碼部分我們選擇利用鍵盤控制模型的動作，首先導入模塊(API模塊: 遠端通訊、keyboard模塊: 檢測鍵盤輸入、time模塊: 暫停當前程式一段時間)。\\
-導入控制的主機位置，創建一個從遠端客戶端獲取的對象的變量，進行運動模擬控制，在軟體控制中，我們利用角度控制轉軸的所在位置，首先調用需要控制的轉軸，接著定義控制轉軸的函數，設置無限迴圈檢測目標按鍵為正確位置，再將先前定義的函數寫入迴圈，以上步驟完成後，即可控制每隻轉軸角度達成理想動作。\\
-設定前進動作時，先將左前腿及右後腿往前抬，並同時將右前腿及左後腿往後踢設定前抬左前腿時，左前腿的前抬角度必須比右後腿高，這樣才不會使左前腿觸碰到地面而造成反力無法前進。\\
-設定後退動作:先將左前腿及右後腿往後抬，同時將右前腿及左後腿往前踢，設定後抬右後腿時，右後腿的後抬角度必須比左前腿高，這樣才不會使右後腿觸碰到地面而造成反力無法後退，完成前面的動作後，將左右動作對調即可達成左右腿互換的動作。\\
+運動模擬主要以Python程式碼進行控制，優點有為可以遠端控制模擬、可依據運動學計算出角度控制末端點位置。
+進行運動模擬控制，在軟體控制中，我們利用角度控制轉軸的所在位置，調用並定義需要控制的轉軸及函數，設置無限迴圈檢測目標按鍵為正確位置，再將先前定義的函數寫入迴圈，以上步驟完成後，即可控制每隻轉軸角度達成理想動作。\\
 
-\begin{lstlisting}[caption=\Large Mini-batch gradient descrnt]
-from zmqRemoteApi import RemoteAPIClient
+
+\label{模塊導入}
+\begin{lstlisting}[caption=\Large 模塊導入]
+from zmqRemoteApi import RemoteAPIClient 
 import keyboard
 import time
 
@@ -22,16 +33,32 @@ import time
 client = RemoteAPIClient('localhost', 23000)
 \end{lstlisting}
 
-\label{導入模組}
-\begin{lstlisting}[caption=\Large Mini-batch gradient descrnt]
+\begin{itemize}
+\item API模塊 : 遠端通訊客戶端介面
+\item keyboard模塊 : 檢測鍵盤輸入
+\item time模塊 : 暫停當前程式一段時間
+\item client : 導入遠端場景的地址和端口
+\end{itemize}
+以較為直覺且直觀的鍵盤進行控制，使用者可以依據自己的想法控制機器人做動
+
+
+
+\label{啟動模擬}
+\begin{lstlisting}[caption=\Large 啟動模擬]
 print('Program started')
 sim = client.getObject('sim')
 sim.startSimulation()
 print('Simulation started')
 \end{lstlisting}
+\begin{enumerate}
+\item 輸出訊息表示程式開始運行
+\item 與場景的連接
+\item 啟動了場景中的模擬
+\item 輸出一個訊息表示模擬已經開始運行。
+\end{enumerate}
 
 \label{轉軸設定}
-\begin{lstlisting}[caption=\Large Mini-batch gradient descrnt]
+\begin{lstlisting}[caption=\Large 轉軸設定]
 #調用需要控制的轉軸
 joint_1_1 = sim.getObject('/joint_1_1')
 joint_1_2 = sim.getObject('/joint_1_2')
@@ -41,24 +68,41 @@ joint_3_1 = sim.getObject('/joint_3_1')
 joint_3_2 = sim.getObject('/joint_3_2')
 joint_4_1 = sim.getObject('/joint_4_1')
 joint_4_2 = sim.getObject('/joint_4_2')
-\end{lstlisting}   
+\end{lstlisting}  
+
+調用需要控制的轉軸，代表場景中的不同關節，進一步用於操作和控制這些關節物件的行為。
 
 \label{轉軸函數}
-\begin{lstlisting}[caption=\Large Mini-batch gradient descrnt]
+\begin{lstlisting}[caption=\轉軸函數]
 #定義控制轉軸函數 
-def setJointPosition(target_angle1,target_angle2,target_angle3,target_angle4,target_angle5,target_angle6,target_angle7,target_angle8):
-        sim.setJointTargetPosition(joint_1_1, target_angle1 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_1_2, target_angle2 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_2_1, target_angle3 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_2_2, target_angle4 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_3_1, target_angle5 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_3_2, target_angle6 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_4_1, target_angle7 * 3.14159 / 180)
-        sim.setJointTargetPosition(joint_4_2, target_angle8 * 3.14159 / 180)
+
+def setJointPosition(target_angle1，target_angle2,
+        target_angle3,target_angle4,target_angle5,
+        target_angle6,target_angle7,target_angle8):
+
+     sim.setJointTargetPosition(joint_1_1,
+                target_angle1 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_1_2,
+                target_angle2 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_2_1,
+                target_angle3 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_2_2,
+                target_angle4 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_3_1,
+                target_angle5 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_3_2,
+                target_angle6 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_4_1,
+                target_angle7 * 3.14159 / 180)
+     sim.setJointTargetPosition(joint_4_2,
+                target_angle8 * 3.14159 / 180)
+     
 \end{lstlisting}
+用於設定場景中關節的目標位置，目標角度設定為對應關節的目標位置，以便控制場景中的關節物件達到指定的角度位置。
+
 
 \label{鍵盤控制及角度設定}
-\begin{lstlisting}[caption=\Large Mini-batch gradient descrnt]
+\begin{lstlisting}[caption=\Large 鍵盤控制及角度設定]
 #使用鍵盤移動模型
 while True:
     if keyboard.is_pressed('q'):
@@ -74,6 +118,7 @@ while True:
     else:
         setJointPosition(-10,0,-10,0,-10,0,-10,0)
 \end{lstlisting}
+設定各關節目標位置並利用按鍵偵測確定選用哪條函式。\
 
 \section{運動模擬}
 我們可以將四足機器人運動模式分為以下三種，分別為:\
