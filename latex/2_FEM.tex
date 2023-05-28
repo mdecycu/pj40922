@@ -58,7 +58,7 @@
 \item 網格數量:將決定計算精度及規模大小，一般狀況中，網格數量增加計算精度也會跟著提升，但伴隨而來的是更大的計算量，所以在制定網格大小時應權衡兩個因素。
 \item 網格疏密:在某些變化梯度較大的部位(應力集中處)，需要大密集的網格，密集往個將更好反映數據變化，反之變化梯度較小的部位則用較稀疏的網格，而不同單元之間的連接則採用特殊的過度單元或多點約束等方法連接，才能更好的分配資源，兼顧計算量何計算精度。
 \item 網格質量:指網格形狀的合理性，質量的好壞將直接影響計算精度，質量較差的除了造成局部的計算精度偏差甚至會直接終止計算，因此在重要部位時應該確保其擁有高品質的表現。
-如果網格都是由等邊三角形、正方形、正四面體、立方六面體等組成，則求解精度可以非常接近實際值，但這種只存在於理想狀態下，實際運用卻很難做到。\
+如果網格都是由等邊三角形、正方形、正四面體、立方六面體等組成，則求解精度可以非常接近實際值，但這種只存在於理想狀態下，實際運用卻很難做到。\\
 \end{enumerate}
 
 \begin{itemize}
@@ -114,19 +114,16 @@
 \subsection{變形分析}
 
 在有限元素分析中，通常使用格拉朗日公式，透過觀察材料的平移或旋轉來建立力學方程。
-在材料上設置隨意點(X)，，觀察點(X)隨時間(t)變化後的材料位移矢量u(X,t)，轉換為空間坐標系x=X+u即可以得到一個拉格朗日公式，只要材料為柔性體就會產生局部變化，此現象稱為應變或伸長，下列將透過多種方式來描述材料變形過程。\
+在材料上設置隨意點(X)，觀察點(X)隨時間(t)變化後的材料位移矢量u(X,t)，轉換為空間坐標系x=X+u即可以得到一個拉格朗日公式，只要材料為柔性體就會產生局部變化，此現象稱為應變或伸長，下列將透過多種方式來描述材料變形過程。\
 
 \begin{itemize}
 \item 變形梯度
 \end{itemize}
 
 變形梯度F定義為
-$$
-\mathbf{F}=\frac{\partial \mathbf{x}}{\partial \mathbf{X}}=\mathbf{I}+\frac{\partial \mathbf{u}}{\partial \mathbf{X}}
-$$
-其中, $\mathbf{I}$ 等同張量, 展開為矩陣形式為:\
-$$
-\mathbf{F}=\left[\begin{array}{lll}
+$$\mathbf{F}=\frac{\partial \mathbf{x}}{\partial \mathbf{X}}=\mathbf{I}+\frac{\partial \mathbf{u}}{\partial \mathbf{X}}$$
+其中, $\mathbf{I}$ 等同張量, 展開為矩陣形式為:\\
+$$\mathbf{F}=\left[\begin{array}{lll}
 \frac{\partial x}{\partial X} & \frac{\partial x}{\partial Y} & \frac{\partial x}{\partial Z} \\
 \frac{\partial y}{\partial X} & \frac{\partial y}{\partial Y} & \frac{\partial y}{\partial Z} \\
 \frac{\partial z}{\partial X} & \frac{\partial z}{\partial Y} & \frac{\partial z}{\partial Z}
@@ -134,10 +131,9 @@ $$
 1+\frac{\partial u}{\partial X} & \frac{\partial u}{\partial Y} & \frac{\partial u}{\partial Z} \\
 \frac{\partial v}{\partial X} & 1+\frac{\partial v}{\partial Y} & \frac{\partial v}{\partial Z} \\
 \frac{\partial w}{\partial X} & \frac{\partial w}{\partial Y} & 1+\frac{\partial w}{\partial Z}
-\end{array}\right]
-$$
-上述矩陣包含材料局部旋轉和變形的完整解釋，其中還顯示許多訊息，例如:\
-由於dx=FdX，未變形體dX中小線段是如何旋轉並拉伸，成為變形體dX中的線段，我們將F張量看做一個矩陣，第一列提供線段最開始沿X方向的大小和方向等信息。從數學角度來看，F是從X改變到x雅可比矩陣，因此它的行列為式J=det(F)為局體體積比例因子，為不可壓縮材料，J=1。\\
+\end{array}\right]$$
+上述矩陣包含材料局部旋轉和變形的完整解釋，其中還顯示許多訊息，例如:\\
+由於dx=FdX，未變形體dX中小線段是如何旋轉並拉伸，成為變形體dX中的線段，我們將F張量看做一個矩陣，第一列提供線段最開始沿X方向的大小和方向等信息。從數學角度來看，F是從X改變到x雅可比矩陣，因此它的行列為式J=det(F)為局體體積比例因子，為不可壓縮材料J=1。\\
 極分析定理表明，任何二階張量都可以分解為純轉動和對稱張量的成績，利用這一定理將剛體轉動與變形分開:\\
 F=RU\\
 這可以解釋為先發生變形（伸長張量U），再進行剛性旋轉（旋轉矩陣R）。如此一來，如果沒有旋轉，右伸長張量則為變形梯度，因此U的解釋與F類似。\\
@@ -146,9 +142,7 @@ F=VR\\
 此過程中，會先發生剛體轉動，然後轉動的體發生形變，變形透過左伸長量(V)描述。\\
 這兩個伸長張量(U)、(V)通過純轉向有著關聯，例如$\mathbf{V}=\mathbf{F R}^T=\mathbf{R} \mathbf{U} \mathbf{R}^T$。事實上，此處旋轉矩陣的轉置也是其自身的逆 $\left(\mathbf{R}^T \mathbf{R}=\mathbf{R R}^T=\mathbf{I}\right)$ 。\\
 在實踐操作中，極分析的計算結果趨向於更高，因此，人們會盡量避免這種類型的計算。但在理論思考方面，這個概念非常有用。我們可以在不確定旋轉矩陣的情況下，計算與旋轉無關的變形測量：\
-$$
-\mathbf{F}^T \mathbf{F}=(\mathbf{R U})^T \mathbf{R} \mathbf{U}=\mathbf{U}^T \mathbf{R}^T \mathbf{R} \mathbf{U}=\mathbf{U}^T \mathbf{U}=\mathbf{U}^2=\mathbf{C}
-$$
+$$\mathbf{F}^T \mathbf{F}=(\mathbf{R U})^T \mathbf{R} \mathbf{U}=\mathbf{U}^T \mathbf{R}^T \mathbf{R} \mathbf{U}=\mathbf{U}^T \mathbf{U}=\mathbf{U}^2=\mathbf{C}$$
 張量C稱為右柯西-格林變形張量。\\
 這個張量經常用於描述超彈性材料的本構特性等，僅由U張量構成,因此用描述材料在旋轉“之前”的變形。\\
 由此可知\
