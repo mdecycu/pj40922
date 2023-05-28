@@ -223,6 +223,10 @@ $$
 
 \subsection{應力方程}
 
+\begin{itemize}
+\item 動量平衡
+\end{itemize}
+
 作用在變形區域上的表面力可以表示為\
 $$d \mathbf{F}_s=\mathbf{t}_n d a=\mathbf{T}_N d A$$
 其中$\mathbf{t}_{\mathrm{n}}$稱為牽引力，而 $\mathbf{T} \mathrm{N}$通常稱為標稱牽引力，原因是它將實際變形狀態下的作用力與未變形區域關聯起來。
@@ -238,9 +242,7 @@ $$\int_{\partial V_0} T_i d A=\int_{\partial V_0} P_{i J} N_J d A=\int_{V_0} \fr
 因此可以得到動量平衡方程的微分形式如下所示：\\
 $$\rho_0 \frac{\partial^2 u_i}{\partial t^2}=f_{V, i}+\frac{\partial P_{i, J}}{\partial X_J}$$
 或者使用張量符號:\\
-$$
-\rho_0 \frac{\partial^2 \mathbf{u}}{\partial t^2}=\mathbf{f}_V+\nabla_X \cdot \mathbf{P}^{\mathbf{T}}
-$$
+$$\rho_0 \frac{\partial^2 \mathbf{u}}{\partial t^2}=\mathbf{f}_V+\nabla_X \cdot \mathbf{P}^{\mathbf{T}}$$
 張量P稱為第一類Piola-Kirchhoff應力張量，它將空間方向的作用力與原始未變形構型中的區域關聯起來。量指標涉及不同的構型。有時這種數學對象稱為兩點張量。\\
 在實際的變形構型中，可以對牽引矢量$\mathrm{t}_{\mathrm{n}}$和材料體積應用類似的方法，可用下式表示：\\
 $$\mathbf{t}_n=\sigma_{i j} n_j \mathbf{e}_i$$
@@ -254,6 +256,11 @@ $$J=\operatorname{det}(\mathbf{F})=d V / d V_0$$
 體積因子J可以給出變形引起的體積變化。因此，應力張量可通過下式與之關聯\
 $$\mathbf{P}=J \sigma \mathbf{F}^{-T}$$
 通過引入一個稱為基爾霍夫應力張量（定義為$\tau=J \sigma$ ）的張量，可以進一步簡化這個公式及類似公式。基爾霍夫應力張量是一個幾乎沒有實際用途的物理量，但卻具有理論上的便利性。\\
+
+
+\begin{itemize}
+\item 機械能平衡
+\end{itemize}
 將動量方程的微分形式乘以速度矢量，並基於材料對其進行積分，可以得到以下方程：\\
 $$\frac{d}{d t} \int_V \frac{1}{2} \rho v^2 d V+\int_V \sigma: \mathbf{L} d V=\int_V \mathbf{f}_v \cdot \mathbf{v} d V+\int_{\partial V} \mathbf{t}_n \cdot \mathbf{v} d A$$
 這個方程給出了機械能平衡的積分形式，也稱為冪定理。速度的空間梯度為$\mathbf{L}=\nabla_x \mathbf{V}$，其中的運算符表示對兩個指標求和\
@@ -286,7 +293,16 @@ $$\rho_0 \frac{\partial^2 \mathbf{u}}{\partial t^2}=\mathbf{F}_V+\nabla_X \cdot[
 $$\mathbf{S}=\mathbf{S}(\mathbf{E})$$
 可以形成位移矢量的封閉方程組。
 
+\begin{itemize}
+\item 旋轉平面上的應力分量
+\end{itemize}
 
+對於承受軸向載荷的桿，我們很容易將應力  看作一個標量，並認為這個桿上只存在正應力。全應力張量為\
+$\sigma=\left[\begin{array}{ccc}\sigma_x & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0\end{array}\right]$
+在x軸與桿的方向一致的坐標系中表示該應力張量的分量，而在任何其他坐標系中，則同時存在正應力和剪切應力。我們設想一個不與桿軸垂直的概念內表面，就能看出這一點。在這個表面上，實際上存在法向$(\sigma)$應力和剪切$(\tau)$應力。\\
+其中，$\theta$表示桿軸與表面法線的夾角。\\
+
+這種應力狀態通常稱為單軸應力；不過，只有在特定的坐標系中，它才能用單個正應力分量表示。
 
 \section{分析步驟}
 \begin{figure}[hbt!]
