@@ -144,10 +144,19 @@ F=RU\
 同樣也可以將變形梯度分解為\
 F=VR\
 此過程中，會先發生剛體轉動，然後轉動的體發生形變，變形透過左伸長量(V)描述。
-這兩個伸長張量(U)、(V)通過純轉向有著關聯，例如$\mathbf{V}=\mathbf{F R}^T=\mathbf{R} \mathbf{U} \mathbf{R}^T$。事實上，此處旋轉矩陣的轉置也是其自身的逆 $\left(\mathbf{R}^T \mathbf{R}=\mathbf{R R}^T=\mathbf{I}\right)$ 。
-
-
-\subsection{應力分析}
+這兩個伸長張量(U)、(V)通過純轉向有著關聯，例如$\mathbf{V}=\mathbf{F R}^T=\mathbf{R} \mathbf{U} \mathbf{R}^T$。事實上，此處旋轉矩陣的轉置也是其自身的逆 $\left(\mathbf{R}^T \mathbf{R}=\mathbf{R R}^T=\mathbf{I}\right)$ 。\
+在實踐操作中，極分析的計算結果趨向於更高，因此，人們會盡量避免這種類型的計算。但在理論思考方面，這個概念非常有用。我們可以在不確定旋轉矩陣的情況下，計算與旋轉無關的變形測量：\
+$$
+\mathbf{F}^T \mathbf{F}=(\mathbf{R U})^T \mathbf{R} \mathbf{U}=\mathbf{U}^T \mathbf{R}^T \mathbf{R} \mathbf{U}=\mathbf{U}^T \mathbf{U}=\mathbf{U}^2=\mathbf{C}
+$$
+張量C稱為右柯西-格林變形張量。\
+這個張量經常用於描述超彈性材料的本構特性等,僅由U張量構成,因此用描述材料在旋轉“之前”的變形。\
+由此可知
+$$
+\mathbf{F} \mathbf{F}^T=\mathbf{V R}(\mathbf{V R})^T=\mathbf{V R R}^T \mathbf{V}^T=\mathbf{V} \mathbf{V}^T=\mathbf{V}^2=\mathbf{B}
+$$
+B和C都與旋轉無關,但它們描述的是兩個不同坐標系中的變形。\
+張量C是描述材料坐標系中變形的材料張量,B是描述空間坐標系中變形的空間張量\
 
 
 \section{分析步驟}
