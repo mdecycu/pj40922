@@ -175,12 +175,51 @@ $$\frac{V}{V_0}=\lambda_1 \lambda_2 \lambda_3$$
 \end{itemize}
 
 要得到基于零的變形測量值，需要從C中減去等同張量，從而得到格林-拉格朗日應變張量E定義為\
+$$\mathbf{E}=\frac{1}{2}(\mathbf{C}-\mathbf{I})$$
+該張量也描述材料在發生任何轉動之前產生的變形，但在未變形狀態下的所有分項均為零，其分項可以寫為\
+$$E_{i j}=\frac{1}{2}\left(\frac{\partial u_i}{\partial X_j}+\frac{\partial u_j}{\partial X_i}+\frac{\partial u_k}{\partial X_i} \frac{\partial u_k}{\partial X_j}\right)$$
+其中假設對重複指標求和。\\
+格林-拉格朗日應編張量的對角元素如下\
+$$E_{X X}=\frac{\partial u}{\partial X}+\frac{1}{2}\left(\left(\frac{\partial u}{\partial X}\right)^2+\left(\frac{\partial v}{\partial X}\right)^2+\left(\frac{\partial w}{\partial X}\right)^2\right)$$
+非對角元素的示例為\
+$$E_{X Y}=\frac{1}{2}\left(\frac{\partial u}{\partial Y}+\frac{\partial v}{\partial X}+\frac{\partial u}{\partial X} \frac{\partial u}{\partial Y}+\frac{\partial v}{\partial X} \frac{\partial v}{\partial Y}+\frac{\partial w}{\partial X} \frac{\partial w}{\partial Y}\right)$$
+當應變和剛體轉動幅度都很小時，格林-拉格朗日應編張量中的二次項可以忽略不計，由此可得到工程應變張量\
+$$\varepsilon_{i j}=\frac{1}{2}\left(\frac{\partial u_i}{\partial X_j}+\frac{\partial u_j}{\partial X_i}\right)$$
+其分量如下\
+$$\varepsilon_{X X}=\frac{\partial u}{\partial X}$$
+和\
+$$\varepsilon_{X Y}=\frac{1}{2}\left(\frac{\partial u}{\partial Y}+\frac{\partial v}{\partial X}\right)$$
+該應變張量的對角項稱為法向應變或正應變，用於描述沿每個坐標軸的延伸。非對角項是應變張量的剪切分量，用於描述線段之間夾角的變化。這裡的術語很容易被混淆，因為在工程領域，由於$\gamma_{i j}$直接測量角度的變化（以弧度表示），所以人們習慣使用“剪切應變”一詞來描述物理量$\gamma_{i j}=2 \varepsilon_{i j}=$
+剪切應變產生等體積變形；即變形不引起體積改變。對於小應變相對體積變化通過正應變之和求得：\
+$$\frac{\Delta V}{V}=\varepsilon_{x x}+\varepsilon_{y y}+\varepsilon_{z z}=\operatorname{trace}(\varepsilon)$$
 
+\begin{itemize}
+\item 真實應變
+\end{itemize}
 
+有時，我們會使用真實應變 這個術語。在真實應變的單軸定義中，應變增量定義為\
+$$d \varepsilon=\frac{d L}{L}$$
+真實應變的定義基於當前長度，因此在積分後可以得到\
+$$\varepsilon=\ln \left(\frac{L}{L_0}\right)=\ln (\lambda)$$
+這就是真實應變也稱為對數應變的原因。推廣到三維就稱為Hencky應變張量\
 
+\begin{itemize}
+\item 真實應變
+\end{itemize}
 
-
-
+由於應變張量由位移的導數構成，因此並非所有應變場均適用。位移矢量只有三個分量，這意味著，除非各個應變分量都滿足特定的協調性標準，否則它們的積分無法給出唯一的一組位移。工程應變必須滿足以下方程:\\
+$$\frac{\partial^2 \varepsilon_{i j}}{\partial X_k \partial X_l}+\frac{\partial^2 \varepsilon_{k l}}{\partial X_i \partial X_j}-\frac{\partial^2 \varepsilon_{i k}}{\partial X_j \partial X_l}-\frac{\partial^2 \varepsilon_{j l}}{\partial X_i \partial X_k}=0$$
+由於應變張量的對稱性，這81 個方程中只有6 個是非平凡方程。如下所示:\
+$$
+\begin{aligned}
+\frac{\partial^2 \varepsilon_{x x}}{\partial y \partial z} & =\frac{\partial}{\partial x}\left(-\frac{\partial \varepsilon_{y z}}{\partial x}+\frac{\partial \varepsilon_{z x}}{\partial y}+\frac{\partial \varepsilon_{x y}}{\partial z}\right) \\
+\frac{\partial^2 \varepsilon_{y y}}{\partial z \partial x} & =\frac{\partial}{\partial y}\left(-\frac{\partial \varepsilon_{z x}}{\partial y}+\frac{\partial \varepsilon_{x y}}{\partial z}+\frac{\partial \varepsilon_{y z}}{\partial x}\right) \\
+\frac{\partial^2 \varepsilon_{z z}}{\partial x \partial y} & =\frac{\partial}{\partial z}\left(-\frac{\partial \varepsilon_{x y}}{\partial z}+\frac{\partial \varepsilon_{y z}}{\partial x}+\frac{\partial \varepsilon_{z x}}{\partial y}\right) \\
+2 \frac{\partial^2 \varepsilon_{x y}}{\partial x \partial y} & =\frac{\partial^2 \varepsilon_{x x}}{\partial y^2}+\frac{\partial^2 \varepsilon_{y y}}{\partial x^2} \\
+2 \frac{\partial^2 \varepsilon_{y z}}{\partial y \partial z} & =\frac{\partial^2 \varepsilon_{y y}}{\partial z^2}+\frac{\partial^2 \varepsilon_{z z}}{\partial y^2} \\
+2 \frac{\partial^2 \varepsilon_{z x}}{\partial z \partial x} & =\frac{\partial^2 \varepsilon_{z z}}{\partial x^2}+\frac{\partial^2 \varepsilon_{x x}}{\partial z^2}
+\end{aligned}
+$$
 
 \subsection{應力方程}
 
