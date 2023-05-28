@@ -24,12 +24,12 @@
 \section{Solid Edge與Ansys分析比較}
 將零件同時丟進Ansys、Solid Edge進行分析，並比對結果，雖然兩個分析軟體都設定相同的參數，但可能因為軟體的各項因素導致最終結果有所差異，像是軟體使用的模擬方法、網格生成、材料參數、數值設定等因素。\
 \begin{enumerate}
-\item 模擬方式:使用的數值模擬方法和算法可能因為不同的數學模型和近似方法有所差異。
+\item 分析方式:使用的數值模擬方法和算法可能因為不同的數學模型和近似方法有所差異。
 \item 網格生成:使用不同的網格生成算法，導致在相同設定下生成不同的網格。
 \item 材料參數:即使設定相同的材料，兩個軟體的數據庫所使用的材料特性和邊界條件等參數也可能有所差異。
 \item	數值設定:即使設定相同的參數，兩個軟體可能使用不同的預設值或建議值也會造成差異。
 \end{enumerate}
-\newpage
+
 %-----------------------------------------%
 \begin{figure}[hbt!]
 \center
@@ -40,14 +40,11 @@
 
 \begin{table}[htb!]
   \center\large
-  \setlength{\tabcolsep}{1cm}{
+  \setlength{\tabcolsep}{1.2cm}{
   \begin{tabular}{|c|c|c|c|c|}
-    \hline 
-    &Leg1-1+1-5& Leg2 & Leg3 & Leg4  \\
-    \hline 
-    Solid Edge &68.5 & 28.9 & 15.8 & 57.6  \\
-    \hline 
-    Ansys &60.729 & 29.156 & 16.097 & 56.718  \\
+    \hline &Leg1-1+1-5& Leg2 & Leg3 & Leg4  \\
+    \hline Solid Edge &68.5 & 28.9 & 15.8 & 57.6  \\
+    \hline Ansys &60.7 & 29.2 & 16.1 & 56.7  \\
     \hline
    \end{tabular}}
   \caption{\Large ABS最大等效應力(MPa)}
@@ -58,14 +55,14 @@
 
 \begin{table}[htb!]
   \center\large
-  \setlength{\tabcolsep}{1cm}{
+  \setlength{\tabcolsep}{1.2cm}{
   \begin{tabular}{|c|c|c|c|c|}
     \hline   
     &Leg1-1+1-5& Leg2 & Leg3 & Leg4 \\
     \hline 
     Solid Edge&69.6 & 30.8 & 15.9 & 61.2  \\
     \hline 
-    Ansys &61.213 & 30.005 & 15.837 & 60.478  \\
+    Ansys &61.2 & 30.0 & 15.8 & 60.5  \\
     \hline
   \end{tabular}}
   \caption{\Large PLA最大等效應力(MPa)}
@@ -73,14 +70,14 @@
 
 \begin{table}[htb!]
   \center\large
-  \setlength{\tabcolsep}{1cm}{
+  \setlength{\tabcolsep}{1.2cm}{
   \begin{tabular}{|c|c|c|c|c|}
     \hline   
     &Leg1-1+1-5& Leg2 & Leg3 & Leg4 \\
     \hline 
-    Solid Edge&0.934 & 2.11 & 4.09 & 1.06  \\
+    Solid Edge&0.9 & 2.11 & 4.09 & 1.06  \\
     \hline 
-    Ansys &1.0619 & 2.1663 & 4.1043 & 1.0748  \\
+    Ansys &1.1 & 2.17 & 4.1 & 1.1  \\
     \hline
   \end{tabular}}
   \caption{\Large PLA最小安全係數}
