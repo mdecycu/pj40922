@@ -32,9 +32,9 @@ left=3truecm,right=2.5truecm]{geometry}
 %\usepackage{subcaption}%副圖標
 \graphicspath{{./../images/}} %圖片預設讀取路徑
 \usepackage{indentfirst} %設定開頭縮排模組
-\renewcommand{\figurename}{\Large 圖.} %更改圖片標題名稱
-\renewcommand{\tablename}{\Large 表.}
-\renewcommand{\lstlistingname}{\Large 程式.} %設定程式標示名稱
+\renewcommand{\figurename}{\Large 圖 } %更改圖片標題名稱
+\renewcommand{\tablename}{\Large 表 }
+\renewcommand{\lstlistingname}{\Large 程式 } %設定程式標示名稱
 \hoffset=-5mm %調整左右邊界
 \voffset=-8mm %調整上下邊界
 \setlength{\parindent}{3em}%設定首行行距縮排
@@ -43,9 +43,9 @@ left=3truecm,right=2.5truecm]{geometry}
 \usepackage{multirow}%表格置中
 %\usepackage{number line}
 %=------------------更改標題內容----------------------=%
-\titleformat{\chapter}[hang]{\center\sectionef\fontsize{20pt}{1pt}\bfseries}{\LARGE 第\CJKnumber{\thechapter}章}{1em}{}[]
-\titleformat{\section}[hang]{\sectionef\fontsize{18pt}{2.5pt}\bfseries}{{\thesection}}{0.5em}{}[]
-\titleformat{\subsection}[hang]{\sectionef\fontsize{18pt}{2.5pt}\bfseries}{{\thesubsection}}{1em}{}[]
+\titleformat{\chapter}[hang]{\center\sectionef\fontsize{20pt}{18pt}\bfseries}{\LARGE 第\CJKnumber{\thechapter}章}{1em}{}[]
+\titleformat{\section}[hang]{\sectionef\fontsize{18pt}{12pt}\bfseries}{{\thesection}}{0.5pt}{}[]
+\titleformat{\subsection}[hang]{\sectionef\fontsize{16pt}{6pt}\bfseries}{{\thesubsection}}{1pt}{}[]
 %=------------------更改目錄內容-----------------------=%
 \titlecontents{chapter}[11mm]{}{\sectionef\fontsize{18pt}{2.5pt}\bfseries\makebox[3.5em][l]
 {第\CJKnumber{\thecontentslabel}章}}{}{\titlerule*[0.7pc]{.}\contentspage}
@@ -100,11 +100,11 @@ Quadruped Robot Design}
 \hspace{32mm}\makebox[5cm][s]
 {\hspace{36.5mm}詹\quad 侑\quad 儒\quad(40923235)}\\[6pt]
 \hspace{32mm}\makebox[5cm][s]
-{\hspace{31.5mm}蔡\quad 宗\quad 瑋\quad(40923240)}\\[6pt]
+{\hspace{36.5mm}蔡\quad 宗\quad 瑋\quad(40923240)}\\[6pt]
 %設定文字盒子[寬度為5cm][對其方式為文字平均分分布於方框中]空白距離{36.5mm}\空白1em
 \end{LARGE}
 \end{flushleft}
-\vspace{6em}
+\vspace{4em}
 \fontsize{18pt}{2pt}\selectfont\centerline{\makebox[\width][s]
 {中華民國\hspace{3em} 
 一一二\quad 年\quad 六\quad 月}}
@@ -167,7 +167,6 @@ Quadruped Robot Design}
 \renewcommand{\numberline}[1]{\loflabel~#1\hspace*{0.5em}}
 \listoffigures
 %\newcommand{\captioname}{圖}
-\newpage
 \renewcommand{\listtablename}{\centerline{\fontsize{18pt}{\baselineskip}\selectfont\textbf{表\quad 目\quad 錄 }}}
 \newcommand{\lotlabel}{表} %定義\lotlabel 文字為表
 \renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{0.5em}}
