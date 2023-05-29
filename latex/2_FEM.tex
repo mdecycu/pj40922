@@ -7,7 +7,9 @@
 \end{center}
 \end{figure}
 時間及空間問題常用偏微分方程(PDE)做數值求解，將根據不同的模型進行弱化、離散化等求解，此動作稱為有限元素法(FEM)，通過在模型上簡化連續變量的複雜性來實現近似求解，用於複雜的工程結構或物理系統的行為。\\
+
 通常用在具有多種變量的模型上，在分析之前通常加設物理為剛體，剛體狀態下的模擬較為可控並且只擁有時間變量，所以使用常微分方程(ODE)及可計算。\\
+
 而柔性體則會因為受力情況的不同而產生多種變量，才需要利用偏微分方程求解，對物體進行弱化、離散化並劃分網格如(圖 \ref{有限元素法})，接著代入方程計算，此動作稱為有限元素法。\\
 \newpage
 %---------------------第二章/基本概念及假設假定-------------------------%
@@ -54,6 +56,7 @@
 \newpage
 
 \subsection{網格劃分基本原則}
+
 \begin{enumerate}
 \item 網格數量:將決定計算精度及規模大小，一般狀況中，網格數量增加計算精度也會跟著提升，但伴隨而來的是更大的計算量，所以在制定網格大小時應權衡兩個因素。
 \item 網格疏密:在某些變化梯度較大的部位(應力集中處)，需要大密集的網格，密集往個將更好反映數據變化，反之變化梯度較小的部位則用較稀疏的網格，而不同單元之間的連接則採用特殊的過度單元或多點約束等方法連接，才能更好的分配資源，兼顧計算量何計算精度。
@@ -114,7 +117,7 @@
 \subsection{變形分析}
 
 在有限元素分析中，通常使用格拉朗日公式，透過觀察材料的平移或旋轉來建立力學方程。
-在材料上設置隨意點(X)，觀察點(X)隨時間(t)變化後的材料位移矢量u(X,t)，轉換為空間坐標系x=X+u即可以得到一個拉格朗日公式，只要材料為柔性體就會產生局部變化，此現象稱為應變或伸長，下列將透過多種方式來描述材料變形過程。\
+在材料上設置隨意點(X)，觀察點(X)隨時間(t)變化後的材料位移矢量u(X,t)，轉換為空間坐標系x=X+u即可以得到一個拉格朗日公式，只要材料為柔性體就會產生局部變化，此現象稱為應變或伸長，下列將透過多種方式來描述材料變形過程。\\
 
 \begin{itemize}
 \item 變形梯度
@@ -123,6 +126,7 @@
 變形梯度F定義為
 $$\mathbf{F}=\frac{\partial \mathbf{x}}{\partial \mathbf{X}}=\mathbf{I}+\frac{\partial \mathbf{u}}{\partial \mathbf{X}}$$
 其中, $\mathbf{I}$ 等同張量, 展開為矩陣形式為:\\
+
 $$\mathbf{F}=\left[\begin{array}{lll}
 \frac{\partial x}{\partial X} & \frac{\partial x}{\partial Y} & \frac{\partial x}{\partial Z} \\
 \frac{\partial y}{\partial X} & \frac{\partial y}{\partial Y} & \frac{\partial y}{\partial Z} \\
@@ -132,10 +136,12 @@ $$\mathbf{F}=\left[\begin{array}{lll}
 \frac{\partial v}{\partial X} & 1+\frac{\partial v}{\partial Y} & \frac{\partial v}{\partial Z} \\
 \frac{\partial w}{\partial X} & \frac{\partial w}{\partial Y} & 1+\frac{\partial w}{\partial Z}
 \end{array}\right]$$
+
 上述矩陣包含材料局部旋轉和變形的完整解釋，其中還顯示許多訊息，例如:\\
+
 由於dx=FdX，未變形體dX中小線段是如何旋轉並拉伸，成為變形體dX中的線段，我們將F張量看做一個矩陣，第一列提供線段最開始沿X方向的大小和方向等信息。從數學角度來看，F是從X改變到x雅可比矩陣，因此它的行列為式J=det(F)為局體體積比例因子，為不可壓縮材料J=1。\\
 極分析定理表明，任何二階張量都可以分解為純轉動和對稱張量的成績，利用這一定理將剛體轉動與變形分開:\\
-F=RU\\
+$$F=R U$$
 這可以解釋為先發生變形（伸長張量U），再進行剛性旋轉（旋轉矩陣R）。如此一來，如果沒有旋轉，右伸長張量則為變形梯度，因此U的解釋與F類似。\\
 同樣也可以將變形梯度分解為\\
 F=VR\\
@@ -251,23 +257,27 @@ $$J=\operatorname{det}(\mathbf{F})=d V / d V_0$$
 $$\mathbf{P}=J \sigma \mathbf{F}^{-T}$$
 通過引入一個稱為基爾霍夫應力張量（定義為$\tau=J \sigma$ ）的張量，可以進一步簡化這個公式及類似公式。基爾霍夫應力張量是一個幾乎沒有實際用途的物理量，但卻具有理論上的便利性。\\
 
-
 \begin{itemize}
 \item 機械能平衡
 \end{itemize}
 將動量方程的微分形式乘以速度矢量，並基於材料對其進行積分，可以得到以下方程：\\
+
 $$\frac{d}{d t} \int_V \frac{1}{2} \rho v^2 d V+\int_V \sigma: \mathbf{L} d V=\int_V \mathbf{f}_v \cdot \mathbf{v} d V+\int_{\partial V} \mathbf{t}_n \cdot \mathbf{v} d A$$
 這個方程給出了機械能平衡的積分形式，也稱為冪定理。速度的空間梯度為$\mathbf{L}=\nabla_x \mathbf{V}$，其中的運算符表示對兩個指標求和\
 $$\int_V \sigma: \mathbf{L} d V=\int_{V_0} \mathbf{P}: \dot{\mathbf{F}} d V_0$$
 變形分析頁面對速度梯度的特性進行了詳細論述。\\
+
 方程右側的兩個積分項分別表示體積力和表面力的功率輸入，它們分別是這些力在每單位時間內對材料所做的功。左側的項分別為動能變化率以及為體提供的應力功率。對於彈性材料，應力功率是應變能密度變化率。通過使用以下關係式:\
+
 $$
 \begin{aligned}
 & \sigma: \mathbf{L}=J^{-1} \mathbf{P} \mathbf{F}^T: \mathbf{L}= \\
 & =J^{-1} \mathbf{P}:(\mathbf{L} \cdot \mathbf{F})=J^{-1} \mathbf{P}: \dot{\mathbf{F}}
 \end{aligned}
 $$
+
 應力功率可以表示為以下等價形式：\\
+
 $$\int_V \sigma: \mathbf{L} d V=\int_{V_0} \mathbf{P}: \dot{\mathbf{F}} d V_0$$
 因此，我們得出這樣一個結論：第一類Piola-Kirchhoff 應力張量和變形梯度形成了能量共軛對。這種共軛對也可以稱為功率共軛 或功共軛 應力和應變測度。\\
 速度梯度可以分解為對稱和反對稱部分，分別稱為應變率張量$\left(\mathbf{L}_{\mathrm{d}}\right)$和自旋張量$\left(\mathbf{L}_{\mathrm{w}}\right)$。由於柯西應力張量是對稱的 $\sigma: \mathbf{L}=\sigma: \mathbf{L}_d$，，因此與柯西應力形成功率共軛的應變測量是應變率張量。後者也可以寫為\
