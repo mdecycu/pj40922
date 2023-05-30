@@ -15,13 +15,6 @@
 %---------------------第二章/基本概念及假設假定-------------------------%
 \section{基本概念}
 
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=12cm]{有限元素法介紹}
-\caption{\Large 基本概念}\label{有限元素法介紹}
-\end{center}
-\end{figure}
-
 \begin{enumerate}
 \item 節點:每個元素的角落或中心點，用於連接元素之間的邊界條件和解決方程，如(圖 \ref{有限元素法介紹})上所箭頭1指示。
 \item 元素:通常由三角形或者四邊形等形成的區域結構，如(圖 \ref{有限元素法介紹})上箭頭2所指示。
@@ -32,6 +25,13 @@
 \item 離散化:將物理系統或結構等連續變量通過計算轉換為數格元素的過程，目的在於減化連續變量的複雜性，便於處理及分析。關於公式及步驟會因為模型或問題的類型不同而有不一樣的計算方式。
 \item 材料特性:物理系統(模型)的材料性質，不同的材料其中的參數各為不同(彈性模數、蒲松比、極限強度、降伏強度等)。
 \end{enumerate}
+
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=9cm]{有限元素法介紹}
+\caption{\Large 基本概念}\label{有限元素法介紹}
+\end{center}
+\end{figure}
 
 \subsection{邊界條件}
 分為兩種邊界條件，為位移值或施加力條件。
@@ -59,9 +59,7 @@
 \begin{enumerate}
 \item 網格數量:將決定計算精度及規模大小，一般狀況中，網格數量增加計算精度也會跟著提升，但伴隨而來的是更大的計算量，所以在制定網格大小時應權衡兩個因素。
 \item 網格疏密:在某些變化梯度較大的部位(應力集中處)，需要大密集的網格，密集往個將更好反映數據變化，反之變化梯度較小的部位則用較稀疏的網格，而不同單元之間的連接則採用特殊的過度單元或多點約束等方法連接，才能更好的分配資源，兼顧計算量何計算精度。
-\item 網格質量:指網格形狀的合理性，質量的好壞將直接影響計算精度，質量較差的除了造成局部的計算精度偏差甚至會直接終止計算，因此在重要部位時應該確保其擁有高品質的表現。\\
-
-如果網格都是由等邊三角形、正方形、正四面體、立方六面體等組成，則求解精度可以非常接近實際值，但這種只存在於理想狀態下，實際運用卻很難做到。\\
+\item 網格質量:指網格形狀的合理性，質量的好壞將直接影響計算精度，質量較差的除了造成局部的計算精度偏差甚至會直接終止計算，因此在重要部位時應該確保其擁有高品質的表現，如果網格都是由等邊三角形、正方形、正四面體、立方六面體等組成，則求解精度可以非常接近實際值，但這種只存在於理想狀態下，實際運用卻很難做到。\\
 \end{enumerate}
 
 \begin{itemize}
@@ -87,17 +85,15 @@
   \hfill
   \begin{minipage}{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{網格1mm-2}
-    \caption{較密網格所得應力雲圖}
+    \includegraphics[width=\textwidth]{網格50mm-1}
+    \caption{較粗網格}
     \label{網格1mm-2}
   \end{minipage}
   
-  \vspace{0.75cm} % 調整垂直間距
-  
-  \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{網格50mm-1}
-    \caption{較粗網格}
+    \includegraphics[width=\textwidth]{網格1mm-2}
+    \caption{較密網格所得應力雲圖}
     \label{網格50mm-1}
   \end{minipage}
   \hfill
@@ -124,7 +120,7 @@
 \end{itemize}
 
 變形梯度F定義為
-$$\mathbf{F}=\frac{\partial \mathbf{x}}{\partial \mathbf{X}}=\mathbf{I}+\frac{\partial \mathbf{u}}{\partial \mathbf{X}}$$
+$$\mathbf{F}=\frac{\partial \mathbf{x}}{\partial \mathbf{X}}=\mathbf{I}+\frac{\partial \mathbf{u}}{\partial \mathbf{X}}$$\
 
 其中, $\mathbf{I}$ 等同張量, 展開為矩陣形式為:\
 
@@ -136,7 +132,8 @@ $$\mathbf{F}=\left[\begin{array}{lll}
 1+\frac{\partial u}{\partial X} & \frac{\partial u}{\partial Y} & \frac{\partial u}{\partial Z} \\
 \frac{\partial v}{\partial X} & 1+\frac{\partial v}{\partial Y} & \frac{\partial v}{\partial Z} \\
 \frac{\partial w}{\partial X} & \frac{\partial w}{\partial Y} & 1+\frac{\partial w}{\partial Z}
-\end{array}\right]$$\
+\end{array}\right]$$
+\\
 
 上述矩陣包含材料局部旋轉和變形的完整解釋，其中還顯示許多訊息，例如:\
 
