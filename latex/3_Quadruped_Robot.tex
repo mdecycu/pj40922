@@ -26,43 +26,42 @@
 \section{連桿閉環機構}
 在步行結構設計之初，通常透過模仿生物，來創造不同的機械模型，不同型態的機械模型都有其各自特性，對於連接機構的運動控制，一般來說，腿部的機械結構不能過於複雜，過多的機械零件需要較精細的控制元件及設計，對於控制運動軌跡及製作成本來說較不益，以下為Goegebra所繪製連桿機構講述:\\
 
+\begin{figure}[htbp]
+  \begin{minipage}[t]{0.5\linewidth}
+    \centering
+    \includegraphics[height=6cm,width=6cm]{三連桿閉環機構}
+    \caption{三連桿閉環機構}
+    \label{三連桿閉環機構}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.4\linewidth}
+    \centering
+    \includegraphics[height=6cm,width=6cm]{步行機構}
+    \caption{步行機構}
+    \label{步行機構}
+  \end{minipage}
+\end{figure}
+
 \begin{enumerate}
 \item 三連桿閉環機構:\\
 
 此三連桿閉環機構(圖 \ref{三連桿閉環機構})為三個聯桿及三顆馬達組成，此以一個關節連接本體，此種機構優點在於結構較為緊湊、簡單，通過三連桿關節的旋轉角度控制尾端的位置，達到目標動作及整體姿態，具有靈活性、反應快速、定位精度高等優點。\
-
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=6cm]{三連桿閉環機構}
-\caption{\Large 三連桿閉環機構}\label{三連桿閉環機構}
-\end{center}
-\end{figure}
-\newpage
 
 \item 四連桿閉環機構:\\
 
 此四連桿閉環機構(圖 \ref{步行機構ggb})為兩個聯桿及兩顆馬達組成，為四個結構連桿組成一個不規則四邊形，有著兩個馬達分別驅動Leg1-5(綠)及Leg2(紅)桿件搖擺，可以讓連桿有大幅度的運動，此機構較為複雜，需要精細的控制才能實現較穩定的運動，但有著能承受較大負載的優勢，對於運動穩定性也有著良好的表現，也是這個專題研究為何會選擇此機構的原因之一。
 \end{enumerate}
 
-\begin{figure}[hbt!]
-\begin{center}
-\includegraphics[width=6cm]{步行機構ggb}
-\caption{\Large 四連桿閉環機構}\label{步行機構ggb}
-\end{center}
-\end{figure}
-\newpage
-
 %----------------硬體架構---------------%
 \section{硬體架構}
 \begin{figure}[hbtp]
 \begin{center}
-\includegraphics[width=12cm]{四足機器狗}
+\includegraphics[width=8cm]{四足機器狗}
 \caption{\Large 四足機器人}\label{四足機器狗}
 \end{center}
 \end{figure}
 
 上圖所示為本次專題研究的有限元素法的分析對象四足機器人，由四個步行機構及一個本體和馬達及連接板組成硬體結構，因其有負重及穩定性的需求，所以使用上述所講的四連桿閉環機構，如(圖 \ref{四足機器狗})展示了機器狗的的站立姿態。\
-\newpage
 
 \begin{figure}[hbt!]
 \begin{center}
@@ -109,15 +108,7 @@
 
 四連桿機構最早可以追朔到19世紀末的機械工程領域，用於織布機的機械結構，由四個桿件及四個轉動連接點組成，形成一個不規則的四邊形閉環，可以控制機械的運動軌跡及速度，實現自動化編織過程。\\
 
-在現代，四連桿閉環機構被廣泛用於機械工業、機器人技術等領域。作為機器人的關節結構有靈活、平穩、高負載、高自由度等特性，使成為此領域重要結構之一，隨著科技的發展人們也不斷對此機構進行改進和創新、優化以滿足更多的應用需求。\\
-
-此順向運動學將對步行機構(圖 \ref{步行機構分解圖})至(圖 \ref{步行機構})進行計算馬達旋轉角，推導順逆向運動學，由於四組步行機構為相同模型，因此只要提出一個計算即可。
-\newpage
-
-\subsection{順向運動學}
-A部分:由馬達(一)所控制的結構為零件Leg1-1(黃)和Leg1-5(綠)。\
-B部分:由馬達(二)所驅動的結構為零件Leg2(藍)。\
-連桿Leg3(紅)B部份所控制，被動對Leg4(青)施以推力及拉力，因此Leg4(青)中間受A部分連桿約束後將會控制Leg6(橡膠套)做動。\\
+在現代，四連桿閉環機構被廣泛用於機械工業、機器人技術等領域。作為機器人的關節結構有靈活、平穩、高負載、高自由度等特性，使成為此領域重要結構之一，隨著科技的發展人們也不斷對此機構進行改進和創新、優化以滿足更多的應用需求。\
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
@@ -133,8 +124,13 @@ B部分:由馬達(二)所驅動的結構為零件Leg2(藍)。\
     \label{馬達(二)控制件}
   \end{minipage}
 \end{figure}
+A部分:由馬達(一)所控制的結構為零件Leg1-1(黃)和Leg1-5(綠)。\
+B部分:由馬達(二)所驅動的結構為零件Leg2(藍)。\
+連桿Leg3(紅)B部份所控制，被動對Leg4(青)施以推力及拉力，因此Leg4(青)中間受A部分連桿約束後將會控制Leg6(橡膠套)做動。\\
+此順向運動學將對步行機構(圖 \ref{步行機構分解圖})至(圖 \ref{步行機構})進行計算馬達旋轉角，推導順逆向運動學，由於四組步行機構為相同模型，因此只要提出一個計算即可。
 \newpage
 
+\subsection{順向運動學}
 
 \begin{figure}[hbt!]
 \begin{center}
