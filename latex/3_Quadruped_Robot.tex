@@ -58,19 +58,19 @@
 \section{硬體架構}
 \begin{figure}[hbtp]
 \begin{center}
-\includegraphics[width=8cm]{四足機器狗}
+\includegraphics[width=9cm]{四足機器狗}
 \caption{\Large 四足機器人}\label{四足機器狗}
 \end{center}
 \end{figure}
 
-(圖 \ref{四足機器狗})所示為本次專題研究的有限元素法分析對象，四足機器人的的站立姿態，由四個步行機構及一個本體和馬達及連接板組成硬體結構，因其有負重及穩定性的需求，所以使用上述所講的四連桿閉環機構。\
+(圖 \ref{四足機器狗})所示為本次專題研究的有限元素法分析對象，四足機器人的的站立姿態，由四組步行機構及一個本體和馬達及連接板組成硬體結構，因為本專題研究的機器人需要有高負重及高穩定性，所以使用上述所講的四連桿閉環機構。\
 
 \newpage
 
 \begin{figure}[hbt!]
 \begin{center}
 \includegraphics[width=16cm]{零件表}
-\label{零件表}
+\caption{\Large 零件表}\label{零件表}
 \end{center}
 \end{figure}
 \newpage
@@ -79,13 +79,15 @@
 
 \section{運動軌跡}
 以Leg1-5的長度為半徑建立圓形，且給定數值滑桿(一)控制Leg1-5末端點並限制其角度。\
-以Leg2的長度為半徑生成Leg2末端點，且給定數值滑桿(2)控制Leg2末端點並限制其角度。\
+
+以Leg2的長度為半徑生成Leg2末端點，且給定數值滑桿(2)控制Leg2末端點並限制其角度。\\
+
 將兩點設定為搖擺運動，以Leg2末端點為圓心繪製半徑長為Leg3的圓形，再於Leg1-5末端點以L3’為半徑畫圓，即可找出兩圓交點並連接，再用Leg1-5末端點及Leg3末端點為圓心，兩點和目標點距離為半徑畫圓，兩圓交點部分即為目標點。\\
 
 由此可得模擬路徑範圍如下圖所示:\\
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[width=13cm]{機械腿運動軌跡}
+\includegraphics[width=12cm]{機械腿運動軌跡}
 \caption{\Large Geogebra運動軌跡}\label{機械腿運動軌跡}
 \end{center}
 \end{figure}
@@ -113,7 +115,8 @@
 
 四連桿機構最早可以追朔到19世紀末的機械工程領域，用於織布機的機械結構，由四個桿件及四個轉動連接點組成，形成一個不規則的四邊形閉環，可以控制機械的運動軌跡及速度，實現自動化編織過程。\\
 
-在現代，四連桿閉環機構被廣泛用於機械工業、機器人技術等領域。作為機器人的關節結構有靈活、平穩、高負載、高自由度等特性，使成為此領域重要結構之一，隨著科技的發展人們也不斷對此機構進行改進和創新、優化以滿足更多的應用需求。\
+在現代，四連桿閉環機構被廣泛用於機械工業、機器人技術等領域。作為機器人的關節結構有靈活、平穩、高負載、高自由度等特性，使成為此領域重要結構之一，隨著科技的發展人們也不斷對此機構進行改進和創新、優化以滿足更多的應用需求。\\
+
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
@@ -129,6 +132,7 @@
     \label{馬達(二)控制件}
   \end{minipage}
 \end{figure}
+
 A部分:由馬達(一)所控制的結構為零件Leg1-1(黃)和Leg1-5(綠)。\
 B部分:由馬達(二)所驅動的結構為零件Leg2(藍)。\
 連桿Leg3(紅)B部份所控制，被動對Leg4(青)施以推力及拉力，因此Leg4(青)中間受A部分連桿約束後將會控制Leg6(橡膠套)做動。\\
@@ -158,14 +162,14 @@ B部份則為單支連桿組成，套入三角函數的計算方式如下:\\
 
 \[
 \begin{aligned}
-x_{1}&=L_{1}\cos \left( \alpha +\theta \right)\\
-y_{1}&=L_{1}\sin \left( \alpha +\theta \right)\\
+x_{1}&=L_{1}\cos \left( \alpha +\gamma \right)\\
+y_{1}&=L_{1}\sin \left( \alpha +\gamma \right)\\
 \end{aligned}
 \]\\
 
 求出A部分($x$,$y$)座標連接到末端點($x_3$,$y_3$)，再以內分點公式求出$L_1$延伸至$L_4$之交點:\\
 
-$L_4$:為($x_3$,$y_3$)至($x_1$,$y_1$)長度\\
+$L_4$:為($x_3$,$y_3$)至($x_1$,$y_1$)長度\
 
 $L_4$':為($x_2$,$y_2$)至($x$,$y$)長度\\
 
@@ -176,7 +180,7 @@ y_{2}&= \frac{\left (L_{1} + L_{1}' \right) y_{1}}{L_{1}}\\
 \end{aligned}
 \]\\
 
-找出點($x$,$y$)及點($x_2$,$y_2$)即可使用內分點公式求出末段點與地面之交點:
+找出點($x$,$y$)及點($x_2$,$y_2$)用內分點公式求出末段點與地面交點:
 
 \[
 \begin{aligned}
@@ -194,7 +198,7 @@ y_{3}&= \frac{L_{4} y_{2} - \left (L_{4} - L_{4}' \right) y}{L_{4}'}\\
 下方表格為我們在橢圓(表 \ref{足端橢圓運動軌跡})及直線路徑(表 \ref{足端直線運動軌跡})中取出11個點製作成表格，用來末端點在目標位置下的馬達角度，此作用可以直接對末端點進行控制其餘動作在。
 
 \begin{table}[htb!]
-  \center\large{足端橢圓運動軌跡}
+  \center
   \setlength{\tabcolsep}{0.5cm}{
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline 代號 & A & B & C & D & E & F \\
@@ -215,7 +219,7 @@ y_{3}&= \frac{L_{4} y_{2} - \left (L_{4} - L_{4}' \right) y}{L_{4}'}\\
 \end{table}
 
 \begin{table}[htb!]
-  \center\large{足端直線運動軌跡}
+  \center
   \setlength{\tabcolsep}{0.5cm}{
   \begin{tabular}{|c|c|c|c|c|c|}
     \hline 代號 & A & B & C & D & E \\
