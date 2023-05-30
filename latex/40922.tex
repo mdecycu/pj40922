@@ -174,8 +174,18 @@ Quadruped Robot Design}
 \newpage
 \renewcommand{\listtablename}{\centerline{\fontsize{18pt}{\baselineskip}\selectfont\textbf{表\quad 目\quad 錄 }}}
 \newcommand{\lotlabel}{表} %定義\lotlabel 文字為表
-\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{0.5em}}
+\renewcommand{\numberline}[1]{\loflabel~\fontsize{14pt}{12pt}\selectfont #1\hspace*{0.5em}}
 \listoftables
+
+\renewcommand{\listfigurename}{\centerline{\fontsize{18pt}{\baselineskip}\selectfont\textbf{圖\quad 表\quad 目\quad 錄 }}}
+\renewcommand{\listtablename}{}
+
+\renewcommand{\numberline}[1]{圖表~\fontsize{14pt}{12pt}\selectfont#1\hspace*{0.5em}}
+
+\listoffigures
+\listoftables
+
+%----------------------------------------%
 
 \end{center}
 %=-------------------------內容----------------------=%
