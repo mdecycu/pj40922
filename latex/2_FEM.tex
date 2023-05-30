@@ -178,7 +178,7 @@ B和C都與旋轉無關，但它們描述的是兩個不同坐標系中的變形
 從非正式意義上來說，伸長率可定義為當前長度與原始長度之比\
 $$\lambda=\frac{L}{L_0}$$
 
-因此在末變形狀態下，伸長率為1。一般情況下，人們更傾向於使用張量U和C的特徵值。U的三個特徵值$\left(\lambda_1\right)$、$\left(\lambda_2\right.$ 和 $\left.\lambda_3\right)$稱為主伸長率，其對應的特徵矢量在材料坐標系中給出三個正交方向。如果我們研究一個小立方體(正方體)，其中三條邊沿著這三個方向，則它將會發生變化成為長方體，但所有邊仍保持直角相交。邊長變化由主伸長率表示。\
+因此在未變形狀態下，伸長率為1。一般情況下，人們更傾向於使用張量U和C的特徵值。U的三個特徵值$\left(\lambda_1\right$、$\left\lambda_2\right.$ 和 $\left.\lambda_3\right)$稱為主伸長率，其對應的特徵向量在材料坐標系中給出三個正交方向。如果我們研究一個小立方體(正方體)，其中三條邊沿著這三個方向，則它將會發生變形，成為長方體，但所有邊仍保持直角相交。邊長變化由主伸長率表示。\
 如此一來體積變化可以寫為主伸長率的乘積:\
 $$\frac{V}{V_0}=\lambda_1 \lambda_2 \lambda_3$$\
 
@@ -186,7 +186,7 @@ $$\frac{V}{V_0}=\lambda_1 \lambda_2 \lambda_3$$\
 
 對於未變形材料(剛體)C=I。解釋了為甚麼在實際中人們主要使用C來描述較大伸縮性的材料。\\
 
-左柯西-格林變形張量B也具有主伸長率作為特徵值。但由于V描述剛體轉動之後的伸長率，因此主方向依照空間方向來確定。\\
+左Cauchy-Green變形張量B也具有主伸長率作為特徵值。但由于V描述剛體轉動之後的伸長率，因此主方向依照空間方向來確定。\\
 
 \begin{itemize}
 \item 應變張量
@@ -200,13 +200,13 @@ $$E_{i j}=\frac{1}{2}\left(\frac{\partial u_i}{\partial X_j}+\frac{\partial u_j}
 
 其中假設對重複指標求和。\\
 
-格林-拉格朗日應編張量的對角元素如下\
+格林-拉格朗日應變張量的對角元素如下\
 $$E_{X X}=\frac{\partial u}{\partial X}+\frac{1}{2}\left(\left(\frac{\partial u}{\partial X}\right)^2+\left(\frac{\partial v}{\partial X}\right)^2+\left(\frac{\partial w}{\partial X}\right)^2\right)$$\
 
 非對角元素的示例為\
 $$E_{X Y}=\frac{1}{2}\left(\frac{\partial u}{\partial Y}+\frac{\partial v}{\partial X}+\frac{\partial u}{\partial X} \frac{\partial u}{\partial Y}+\frac{\partial v}{\partial X} \frac{\partial v}{\partial Y}+\frac{\partial w}{\partial X} \frac{\partial w}{\partial Y}\right)$$\
 
-當應變和剛體轉動幅度都很小時，格林-拉格朗日應編張量中的二次項可以忽略不計，由此可得到工程應變張量\
+當應變和剛體轉動幅度都很小時，格林-拉格朗日應變張量中的二次項可以忽略不計，由此可得到工程應變張量\
 
 $$\varepsilon_{i j}=\frac{1}{2}\left(\frac{\partial u_i}{\partial X_j}+\frac{\partial u_j}{\partial X_i}\right)$$\
 
@@ -216,7 +216,7 @@ $$\varepsilon_{X X}=\frac{\partial u}{\partial X}$$\
 和\
 $$\varepsilon_{X Y}=\frac{1}{2}\left(\frac{\partial u}{\partial Y}+\frac{\partial v}{\partial X}\right)$$\
 
-該應變張量的對角項稱為法向應變或正應變，用於描述沿每個坐標軸的延伸。非對角項是應變張量的剪切分量，用於描述線段之間夾角的變化。這裡的術語很容易被混淆，因為在工程領域，由於$\gamma_{i j}$直接測量角度的變化（以弧度表示），所以人們習慣使用“剪切應變”一詞來描述物理量$\gamma_{i j}=2 \varepsilon_{i j}=$
+該應變張量的對角項稱為法向應變或正應變，用於描述沿每個坐標軸的延伸。非對角項是應變張量的剪切分量，用於描述線段之間夾角的變化。這裡的術語很容易被混淆，因為在工程領域，由於$\gamma_{i j}$直接測量角度的變化（以弧度表示），所以人們習慣使用“剪切應變”一詞來描述物理量$\gamma_{i j}=2 \varepsilon_{i j}$。
 剪切應變產生等體積變形；即變形不引起體積改變。對於小應變相對體積變化通過正應變之和求得：\
 $$\frac{\Delta V}{V}=\varepsilon_{x x}+\varepsilon_{y y}+\varepsilon_{z z}=\operatorname{trace}(\varepsilon)$$
 
@@ -260,12 +260,12 @@ $$\
 作用在變形區域上的表面力可以表示為\
 $$d \mathbf{F}_s=\mathbf{t}_n d a=\mathbf{T}_N d A$$\
 
-其中$\mathbf{t}_{\mathrm{n}}$稱為牽引力，而 $\mathbf{T} \mathrm{N}$通常稱為標稱牽引力，原因是它將實際變形狀態下的作用力與未變形區域關聯起來。\\
+其中$\mathbf{t}_{\mathrm{n}}$稱為牽引力，而 $\mathbf{T}_N$通常稱為標稱牽引力，原因是它將實際變形狀態下的作用力與未變形區域關聯起來。\\
 
-此外，我們還可以基於法矢將牽引分量寫為以下線性展開式：\
+此外，我們還可以基於法向量將牽引分量寫為以下線性展開式：\
 $$T_i=P_{i J} N_J$$\
 
-在此處和下文中，假設對重複指標求和。空間分量和材料分量分別使用小寫和大寫字母。這種表示有時稱為柯西定律或柯西公式，僅適用於$P_{i J}$為特定二階張量的分量的情況。對於任意未變形的材料體積$V_0$ '，動量守恆可以用以下積分形式表示：\
+在此處和下文中，假設對重複指標求和。空間分量和材料分量分別使用小寫和大寫字母。這種表示有時稱為柯西定律或柯西公式，僅適用於$P_{i J}$為特定二階張量的分量的情況。對於任意未變形的材料體積$V_0$ ，動量守恆可以用以下積分形式表示：\
 $$\frac{d}{d t} \int_{V_0} \rho_0 \mathbf{v} d V=\int_{V_0} \mathbf{f}_V d V+\int_{\partial V_0} \mathbf{T} d A$$\
 
 其中$\mathbf{f}_V$ 表示體積力\\
@@ -274,18 +274,18 @@ $$\frac{d}{d t} \int_{V_0} \rho_0 \mathbf{v} d V=\int_{V_0} \mathbf{f}_V d V+\in
 
 $$\mathbf{v}=\frac{\partial \mathbf{u}}{\partial t}(\mathbf{X}, t)$$
 
-根據散度定理，使用柯西公式可以將表面積分轉換為體積積分：\
+根據高斯定理，使用柯西公式可以將表面積分轉換為體積積分：\
 $$\int_{\partial V_0} T_i d A=\int_{\partial V_0} P_{i J} N_J d A=\int_{V_0} \frac{\partial P_{i J}}{\partial X_J} d V$$\
 
 因此可以得到動量平衡方程的微分形式如下所示：\
 $$\rho_0 \frac{\partial^2 u_i}{\partial t^2}=f_{V, i}+\frac{\partial P_{i, J}}{\partial X_J}$$\
 
-或者使用張量符號:\
+或者使用張量符號得到:\
 $$\rho_0 \frac{\partial^2 \mathbf{u}}{\partial t^2}=\mathbf{f}_V+\nabla_X \cdot \mathbf{P}^{\mathbf{T}}$$\
 
-張量P稱為第一類Piola-Kirchhoff應力張量，它將空間方向的作用力與原始未變形構型中的區域關聯起來。量指標涉及不同的構型。有時這種數學對象稱為兩點張量。\\
+張量P稱為第一類Piola-Kirchhoff應力張量，它將空間方向的作用力與原始未變形構型中的區域關聯起來。因此他的分量指標涉及不同的構型。有時這種數學對象稱為兩點張量。\\
 
-在實際的變形構型中，可以對牽引矢量$\mathrm{t}_{\mathrm{n}}$和材料體積應用類似的方法，可用下式表示：\
+在實際的變形構型中，可以對牽引向量$\mathrm{t}_{\mathrm{n}}$和材料體積應用類似的方法，可用下式表示：\
 $$\mathbf{t}_n=\sigma_{i j} n_j \mathbf{e}_i$$\
 
 張量$\sigma$ 稱為柯西應力張量或真實應力張量，原因是它表示與實際變形區域相關的實際構型中的力。由其空間分量表示。\\
