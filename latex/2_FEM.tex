@@ -18,7 +18,7 @@
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[width=9cm]{有限元素法介紹}
+\includegraphics[width=12cm]{有限元素法介紹}
 \caption{\Large 基本概念}\label{有限元素法介紹}
 \end{center}
 \end{figure}
@@ -31,7 +31,7 @@
 \item 網格:由數個元素經由節點連接所組成，表示在需分析的區域上。
 \item 變形:邊界條件的影響下的形變，經過分析後計算每個元素的變形及變形之間的相互影響預測整得系統變化。
 \item 離散化:將物理系統或結構等連續變量通過計算轉換為數格元素的過程，目的在於減化連續變量的複雜性，便於處理及分析。關於公式及步驟會因為模型或問題的類型不同而有不一樣的計算方式。
-\item 材料特性:物理系統(模型)的材料性質，不同的材料其中的參數各為不同(彈性模數、蒲松比、極限強度、降伏強度等)。
+\item 材料特性:物理系統(模型)的材料性質，不同的材料其中的參數各為不同(彈性模數、蒲松比、極限強度、降伏強度等)。\\
 \end{enumerate}
 
 \subsection{邊界條件}
@@ -91,7 +91,7 @@
     \label{網格1mm-2}
   \end{minipage}
   
-    \begin{minipage}{0.4\textwidth}
+  \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{網格1mm-2}
     \caption{較密網格所得應力雲圖}
@@ -212,7 +212,6 @@ $$\varepsilon_{X Y}=\frac{1}{2}\left(\frac{\partial u}{\partial Y}+\frac{\partia
 
 該應變張量的對角項稱為法向應變或正應變，用於描述沿每個坐標軸的延伸。非對角項是應變張量的剪切分量，用於描述線段之間夾角的變化。這裡的術語很容易被混淆，因為在工程領域，由於$\gamma_{i j}$直接測量角度的變化（以弧度表示），所以人們習慣使用“剪切應變”一詞來描述物理量$\gamma_{i j}=2 \varepsilon_{i j}=$
 剪切應變產生等體積變形；即變形不引起體積改變。對於小應變相對體積變化通過正應變之和求得：\
-
 $$\frac{\Delta V}{V}=\varepsilon_{x x}+\varepsilon_{y y}+\varepsilon_{z z}=\operatorname{trace}(\varepsilon)$$
 
 \begin{itemize}
@@ -220,11 +219,9 @@ $$\frac{\Delta V}{V}=\varepsilon_{x x}+\varepsilon_{y y}+\varepsilon_{z z}=\oper
 \end{itemize}
 
 有時，我們會使用真實應變 這個術語。在真實應變的單軸定義中，應變增量定義為\
-
 $$d \varepsilon=\frac{d L}{L}$$\
 
 真實應變的定義基於當前長度，因此在積分後可以得到\
-
 $$\varepsilon=\ln \left(\frac{L}{L_0}\right)=\ln (\lambda)$$\
 
 這就是真實應變也稱為對數應變的原因。\\
@@ -333,11 +330,9 @@ $$\mathbf{L}_d=\mathbf{F}^{-T} \dot{\mathbf{E}} \mathbf{F}^{-1}$$\
 $$\mathbf{E}=\frac{1}{2}\left(\mathbf{F}^T \mathbf{F}-\mathbf{I}\right)$$\
 
 為格林-拉格朗日應變張量。由此應力功率積分可以改寫為：\
-
 $$\int_V \sigma: \mathbf{L}_d d V=\int_{V_0} \mathbf{S}: \dot{\mathbf{E}} d V_0$$
 
 其中\
-
 $$\mathbf{S}=J \mathbf{F}^{-1} \sigma \mathbf{F}^{-T}$$
 
 稱為第二類Piola-Kirchhoff應力張量，這是一個對稱張量，與格林-拉格朗日應變形成能量共軛。\\
