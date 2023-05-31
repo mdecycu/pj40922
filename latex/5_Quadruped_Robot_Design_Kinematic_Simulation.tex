@@ -15,15 +15,15 @@
 
 \begin{figure}[hbt!]
 \center
-\includegraphics[width=13cm]{cop參數設定}
+\includegraphics[width=15cm]{cop參數設定}
 \caption{零件與轉軸參數設定}\label{cop參數設定}
 \end{figure}
 \newpage
 
 \section{Python控制程式}
-運動模擬主要以Python程式碼進行控制，優點有為可以遠端控制模擬、可依據運動學計算出角度控制末端點位置。\\
+運動模擬主要以Python程式碼進行控制，優點有遠端控制模擬、馬達角度控，以更好控制制末端點位置。\\
 
-進行運動模擬控制時，我們在軟體控制中利用角度控制轉軸的所在位置，調用並定義需要控制的轉軸及函數，設置無限迴圈檢測目標按鍵為正確位置，再將先前定義的函數寫入迴圈，以上步驟完成後，即可控制每隻轉軸角度達成理想動作。\\
+進行運動模擬控制時，我們在軟體中設定角度控制轉軸做動、調用並定義需要控制的轉軸及函數，設置無限迴圈檢測目標按鍵為正確位置，再將先前定義的函數寫入迴圈，以上步驟完成後，即可控制每隻轉軸角度達成理想動作。\\
 
 
 \label{模塊導入}
@@ -145,14 +145,14 @@ while True:
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[height=7.5cm,width=5cm]{模擬動作-1}
+    \includegraphics[height=5cm,width=7.5cm]{模擬動作-1}
     \caption{模擬動作-1}
     \label{模擬動作-1}
   \end{minipage}
   \hfill
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[height=7.5cm,width=5cm]{模擬動作-2}
+    \includegraphics[height=5cm,width=7.5cm]{模擬動作-2}
     \caption{模擬動作-2}
     \label{模擬動作-2}
   \end{minipage}
@@ -160,7 +160,7 @@ while True:
 
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[height=7.5cm,width=5cm]{模擬動作-3}
+\includegraphics[height=5cm,width=7.5cm]{模擬動作-3}
 \caption{\Large 模擬動作-3}\label{模擬動作-3}
 \end{center}
 \end{figure}
